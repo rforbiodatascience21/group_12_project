@@ -11,8 +11,8 @@ library("tidyverse")
 
 
 # Load data ---------------------------------------------------------------
-x <- read_tsv(file = "data/SPE_pitlatrine.csv.gz")
-y <- read_tsv(file = "data/ENV_pitlatrine.csv.gz")
+SPE <- read_csv(file = "data/SPE_pitlatrine.csv.gz")
+ENV <- read_csv(file = "data/ENV_pitlatrine.csv.gz")
 
 # Wrangle data ------------------------------------------------------------
 SPE %>%
