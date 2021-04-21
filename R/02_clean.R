@@ -23,4 +23,4 @@ my_data_clean = SPE %>%
 
 # Write data --------------------------------------------------------------
 write_tsv(x = my_data_clean,
-          path = "data/02_my_data_clean.tsv.gz")
+          file = "data/02_my_data_clean.tsv.gz")

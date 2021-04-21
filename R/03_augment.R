@@ -23,4 +23,4 @@ my_data_clean_aug = my_data_clean %>%
 
 # Write data --------------------------------------------------------------
 write_tsv(x = my_data_clean_aug,
-          path = "data/03_my_data_clean_aug.tsv.gz")
+          file = "data/03_my_data_clean_aug.tsv.gz")
