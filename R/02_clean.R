@@ -11,8 +11,8 @@ library("tidyverse")
 
 
 # Load data ---------------------------------------------------------------
-SPE <- read_csv(file = "data/SPE_pitlatrine.csv.gz")
-ENV <- read_csv(file = "data/ENV_pitlatrine.csv.gz")
+SPE <- read_tsv(file = "data/SPE_pitlatrine.tsv.gz")
+ENV <- read_tsv(file = "data/ENV_pitlatrine.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
 SPE %>%
@@ -22,5 +22,5 @@ SPE %>%
   full_join(ENV, by = "Samples")
 
 # Write data --------------------------------------------------------------
-write_tsv(x = my_data_clean,
+write_tsv(x = SPE,
           path = "data/02_my_data_clean.tsv.gz")
