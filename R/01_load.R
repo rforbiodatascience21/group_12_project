@@ -16,5 +16,5 @@ ENV = read_csv("data/raw/ENV_pitlatrine.csv")
 
 
 # Write data --------------------------------------------------------------
-write_tsv(x = SPE, file = "data/SPE_pitlatrine.tsv.gz")
-write_tsv(x = ENV, file = "data/ENV_pitlatrine.tsv.gz")
+write_tsv(x = SPE, file = "data/01_SPE_pitlatrine.tsv.gz")
+write_tsv(x = ENV, file = "data/01_ENV_pitlatrine.tsv.gz")
