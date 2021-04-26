@@ -39,7 +39,7 @@ pca_fit %>%
 pca_fit %>%
   tidy(matrix = "eigenvalues") %>%
   ggplot(aes(PC, cumulative)) +
-  geom_col(fill = "indianred4", alpha = 0.8) +
+  geom_col(fill = "turquoise4", alpha = 0.8) +
   scale_x_continuous(limits=c(0,11), breaks=1:10) +
   scale_y_continuous(
     labels = scales::percent_format(),
@@ -48,7 +48,7 @@ pca_fit %>%
   labs(x = "Principal componet", 
        y = "Cumulative percentage",
        title = "Variance explained by principal componets") +
-  geom_hline(yintercept = 0.95, linetype = "dashed", color = "turquoise4") +
+  geom_hline(yintercept = 0.95, linetype = "dashed", color = "indianred4") +
   theme_minimal_hgrid(12)
 
 
