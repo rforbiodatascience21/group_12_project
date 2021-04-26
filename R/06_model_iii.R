@@ -1,14 +1,13 @@
 # Clear workspace ---------------------------------------------------------
 rm(list = ls())
 #
-
+#install.packages("cowplot")
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
 
 library("tidyr")
 library("broom")
 library("cowplot")
-
 
 # Define functions --------------------------------------------------------
 source(file = "R/99_functions.R")
@@ -17,19 +16,24 @@ source(file = "R/99_functions.R")
 my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
+
 #Do a PCA fit
 pca_fit <- my_data_clean_aug %>% 
   select(where(is.numeric)) %>% # retain only numeric columns
   prcomp(scale = TRUE) # do PCA on scaled data
 
+
 # Visualise data ----------------------------------------------------------
 pca_fit %>%
-  augment(my_data_clean_aug) %>% # add original dataset back in
-  ggplot(aes(.fittedPC1, .fittedPC2, color = site)) + 
-  geom_point(size = 1.5) +
-  stat_ellipse(frame = TRUE, frame.type = 'norm') + 
-  labs(x = "PC 1", y = "PC 2", title = "Scatter plot in Top 2 Principal Components") +
-  theme_half_open(12) + background_grid()
+  tidy(matrix = "eigenvalues") %>%
+  ggplot(aes(PC, percent)) +
+  geom_col(fill = "#56B4E9", alpha = 0.8) +
+  scale_x_continuous(limits=c(0,11), breaks=1:10) +
+  scale_y_continuous(
+    labels = scales::percent_format(),
+    expand = expansion(mult = c(0, 0.01))
+  ) +
+  theme_minimal_hgrid(12)
 
 # Write data --------------------------------------------------------------
 
