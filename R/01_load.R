@@ -4,6 +4,7 @@ rm(list = ls())
 
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
+library("biom")
 
 
 # Define functions --------------------------------------------------------
@@ -11,8 +12,8 @@ source(file = "R/99_functions.R")
 
 
 # Load raw data and save it------------------------------------------------
-SPE = read_csv(file = "data/raw/SPE_pitlatrine.csv")
-ENV = read_csv("data/raw/ENV_pitlatrine.csv")
+SPE = read_biom(file = "data/raw/SPE_pitlatrine.csv")
+
 
 
 # Write data --------------------------------------------------------------
