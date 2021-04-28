@@ -13,8 +13,8 @@ source(file = "R/99_functions.R")
 
 
 # Load raw data and save it------------------------------------------------
-data = import_biom("feature-table_taxonomy.biom")
-metadata = read_xlsx("GE_mapfile.xlsx")
+data = import_biom("data/raw/feature-table_taxonomy.biom")
+metadata = read_xlsx("data/raw/GE_mapfile.xlsx")
 
 
 # Write data --------------------------------------------------------------
