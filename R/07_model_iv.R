@@ -43,7 +43,7 @@ pca_fit %>%
     hjust = 1, nudge_x = -0.02, 
     color = "#904C2F"
   ) +
-  xlim(-0.25, 0.25) + ylim(-0.25, 0.25) +
+  xlim(-0.6, 0.6) + ylim(-0.6, 0.6) +
   coord_fixed() + # fix aspect ratio to 1:1
   theme_minimal_grid(12)
 
