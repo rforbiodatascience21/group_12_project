@@ -4,6 +4,7 @@ rm(list = ls())
 
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
+library("stringr")
 
 
 # Define functions --------------------------------------------------------
@@ -11,15 +12,16 @@ source(file = "R/99_functions.R")
 
 
 # Load data ---------------------------------------------------------------
-SPE <- read_tsv(file = "data/SPE_pitlatrine.tsv.gz")
-ENV <- read_tsv(file = "data/ENV_pitlatrine.tsv.gz")
+data <- read_tsv(file = "data/01_data.tsv.gz")
+metadata <- read_tsv(file = "data/01_meta_data.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
-my_data_clean = SPE %>%
-  pivot_longer(cols = -Taxa,
-               names_to = "Samples",
-               values_to = "OTU_Count") %>%
-  full_join(ENV, by = "Samples")
+my_data_clean = data %>%
+  #merging data
+  full_join(metadata, by = c("Sample"="#SampleID")) %>%
+  #only select samples with metadata
+  filter(., Description != "N")
+
 
 # Write data --------------------------------------------------------------
 write_tsv(x = my_data_clean,
