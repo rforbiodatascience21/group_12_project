@@ -15,9 +15,7 @@ my_data_clean <- read_tsv(file = "data/02_my_data_clean.tsv.gz")
 
 
 # Wrangle data ------------------------------------------------------------
-my_data_clean_aug = my_data_clean %>%
-  mutate(site = case_when(str_detect(Samples, "^T") ~ "Tanzania",
-                        str_detect(Samples, "^V") ~ "Vietnam")) 
+my_data_clean_aug = my_data_clean 
 
 
 # Write data --------------------------------------------------------------
