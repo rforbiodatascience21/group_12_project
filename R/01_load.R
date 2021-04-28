@@ -1,11 +1,15 @@
 # Clear workspace ---------------------------------------------------------
 rm(list = ls())
 
-
 # Load libraries ----------------------------------------------------------
+#if (!requireNamespace("BiocManager", quietly = TRUE))
+# install.packages("BiocManager")
+#BiocManager::install(version = "3.12")
+#BiocManager::install("phyloseq")
 library(tidyverse)
 library(phyloseq)
 library(readxl)
+
 
 
 # Define functions --------------------------------------------------------
