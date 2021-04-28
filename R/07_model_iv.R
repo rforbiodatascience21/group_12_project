@@ -1,9 +1,10 @@
 # Clear workspace ---------------------------------------------------------
 rm(list = ls())
 #
-
+#install.packages("cowplot")
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
+
 library("tidyr")
 library("broom")
 library("cowplot")
@@ -21,14 +22,30 @@ pca_fit <- my_data_clean_aug %>%
   select(where(is.numeric)) %>% # retain only numeric columns
   prcomp(scale = TRUE) # do PCA on scaled data
 
-# Visualise data ----------------------------------------------------------
+#Extract Rotation matrix
 pca_fit %>%
-  augment(my_data_clean_aug) %>% # add original dataset back in
-  ggplot(aes(.fittedPC1, .fittedPC2, color = site)) + 
-  geom_point(size = 1.5) +
-  stat_ellipse(frame = TRUE, frame.type = 'norm') + 
-  labs(x = "PC 1", y = "PC 2", title = "Scatter plot in Top 2 Principal Components") +
-  theme_half_open(12) + background_grid()
+  tidy(matrix = "rotation")
+# Visualise data ----------------------------------------------------------
+#Make an arrow plot
+# define arrow style for plotting
+arrow_style <- arrow(
+  angle = 20, ends = "first", type = "closed", length = grid::unit(8, "pt")
+)
+
+# plot rotation matrix
+pca_fit %>%
+  tidy(matrix = "rotation") %>%
+  pivot_wider(names_from = "PC", names_prefix = "PC", values_from = "value") %>%
+  ggplot(aes(PC1, PC2)) +
+  geom_segment(xend = 0, yend = 0, arrow = arrow_style) +
+  geom_text(
+    aes(label = column),
+    hjust = 1, nudge_x = -0.02, 
+    color = "#904C2F"
+  ) +
+  xlim(-0.25, 0.25) + ylim(-0.25, 0.25) +
+  coord_fixed() + # fix aspect ratio to 1:1
+  theme_minimal_grid(12)
 
 # Write data --------------------------------------------------------------
 
