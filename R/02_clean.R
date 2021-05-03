@@ -15,12 +15,14 @@ source(file = "R/99_functions.R")
 data <- read_tsv(file = "data/01_data.tsv.gz")
 metadata <- read_tsv(file = "data/01_meta_data.tsv.gz")
 
+
 # Wrangle data ------------------------------------------------------------
 my_data_clean = data %>%
   #merging data
   full_join(metadata, by = c("Sample"="#SampleID")) %>%
   #only select samples with metadata
-  filter(., Description != "N")
+  filter(., Description != "N") %>% 
+  filter(., !is.na(Rank2))
 
 
 # Write data --------------------------------------------------------------
