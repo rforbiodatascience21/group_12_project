@@ -19,5 +19,7 @@ otu_abundane = my_data_clean_aug %>%
   pivot_wider(., names = ) 
 nmds = metaMDS(my_data_clean_aug, distance = "bray") #Virker ikke før vi har pivot
 
+plot(nmds)
+
 # Write data --------------------------------------------------------------
 
