@@ -1,6 +1,7 @@
 # Clear workspace ---------------------------------------------------------
 rm(list = ls())
 
+
 # Load libraries ----------------------------------------------------------
 #if (!requireNamespace("BiocManager", quietly = TRUE))
 # install.packages("BiocManager")
@@ -11,7 +12,6 @@ library(phyloseq)
 library(readxl)
 
 
-
 # Define functions --------------------------------------------------------
 source(file = "R/99_functions.R")
 
@@ -20,8 +20,10 @@ source(file = "R/99_functions.R")
 data = import_biom("data/raw/feature-table_taxonomy.biom")
 metadata = read_xlsx("data/raw/GE_mapfile.xlsx")
 
+
 #Convert to tidy format
 data = psmelt(data)
+
 
 # Write data --------------------------------------------------------------
 write_tsv(x = data, file = "data/01_data.tsv.gz")
