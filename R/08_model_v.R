@@ -23,5 +23,7 @@ my_data_clean_aug_wide <- my_data_clean_aug %>%
 
 nmds = metaMDS(my_data_clean_aug_wide, distance = "bray")
 
+plot(nmds)
+
 # Write data --------------------------------------------------------------
 
