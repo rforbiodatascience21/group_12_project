@@ -20,7 +20,8 @@ my_data_clean = data %>%
   #merging data
   full_join(metadata, by = c("Sample"="#SampleID")) %>%
   #only select samples with metadata
-  filter(., Description != "N")
+  filter(., Description != "N") %>% 
+  filter(., !is.na(Rank2))
 
 
 # Write data --------------------------------------------------------------
