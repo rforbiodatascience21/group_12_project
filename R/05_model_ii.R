@@ -23,13 +23,13 @@ my_data_clean_small_rel_plot <- produce_topX(my_data_clean_small, topX_phylum)
 
 
 # Visualise data ----------------------------------------------------------
-ggplot(my_data_clean_small_rel_plot, aes(x = Sample, y = Phylum_abundance, 
+ggplot(topX_phylum, aes(x = Sample, y = Phylum_abundance, 
            # we sort the top phyla alphabetically, then add "Other" at the end
-           fill = factor(Phylum, c(sort())))) + 
+           fill = factor(Phylum))) + 
   geom_bar(stat = "identity", position = "fill") + 
   labs(x = "Sample", y = "Relative abundance") + 
   scale_y_continuous(expand = c(0.02, 0), labels = scales::percent_format()) +
-  scale_fill_manual(values = c(as.character(iwanthue(nrow(distinct(my_data_clean_small_rel_plot, Phylum)))))) +
+  scale_fill_manual(values = c(as.character(iwanthue(nrow(distinct(topX_phylum, Phylum)))))) +
   facet_grid( ~ Location, scales = "free_x", space = "free_x") + 
   theme_classic() +
   theme(axis.text = element_text(colour = "black"),
