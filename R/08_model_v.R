@@ -1,30 +1,21 @@
 # Clear workspace ---------------------------------------------------------
 rm(list = ls())
-
-
+#
+#install.packages("cowplot")
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
-library("stringr")
+library("tidyr")
+library("vegan")
 
 
 # Define functions --------------------------------------------------------
 source(file = "R/99_functions.R")
 
-
 # Load data ---------------------------------------------------------------
-data <- read_tsv(file = "data/01_data.tsv.gz")
-metadata <- read_tsv(file = "data/01_meta_data.tsv.gz")
-
+my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
-my_data_clean = data %>%
-  #merging data
-  full_join(metadata, by = c("Sample"="#SampleID")) %>%
-  #only select samples with metadata
-  filter(., Description != "N") %>% 
-  filter(., !is.na(Rank2))
-
+nmds = metaMDS(my_data_clean_aug, distance = "bray")
 
 # Write data --------------------------------------------------------------
-write_tsv(x = my_data_clean,
-          file = "data/02_my_data_clean.tsv.gz")
+
