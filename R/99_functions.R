@@ -23,7 +23,7 @@ produce_topX <- function(data, top_phylum) {
     #classify all other phylum as "Other"
     mutate(Phylum = case_when(Phylum %in% top_phylum ~ Phylum, T ~ "Other")) %>% 
     #sum up for each Phylum for the ones named "Other"
-    group_by(Sample, Phylum, Location) %>% 
+    group_by(Sample, Phylum, Location, Season) %>% 
     summarise(Phylum_abundance = sum(Abundance)) %>%
     # Add metadata
     ungroup()
