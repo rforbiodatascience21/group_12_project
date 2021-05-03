@@ -23,8 +23,18 @@ rel_topX <- function(data, X){
     top_n(., X, sum_rel_abundance) %>%
     pull(., Phylum)
   
+  topX <- data %>%
+    #classify all other phylum as "Other"
+    mutate(Phylum = case_when(Phylum %in% top_phylum ~ Phylum, T ~ "Other")) %>% 
+    #sum up for each Phylum for the ones named "Other"
+    group_by(Sample, Phylum, Location) %>% 
+    summarise(Phylum_abundance = sum(Abundance)) %>%
+    # Add metadata
+    ungroup()
+  
   return(topX)
 }
+
 
 #Function to calculate vector of X most abundant phylum in samples with rest
 #is grouped in "Other"
@@ -35,21 +45,10 @@ topX <- function(data, X){
     top_n(., X, sum_abundance) %>%
     pull(., Phylum)
   
-  return(topX)
+  return(top_phylum)
 }
 
 
-#function to 
-produce_topX <- function(data, topX){
-  topX <- data %>%
-    #classify all other phylum as "Other"
-    mutate(Phylum = case_when(Phylum %in% topX ~ Phylum, T ~ "Other")) %>% 
-    #sum up for each Phylum for the ones named "Other"
-    group_by(Sample, Phylum, Location) %>% 
-    summarise(Phylum_abundance = sum(Abundance)) %>%
-    # Add metadata
-    ungroup()
-}
 
 
 
