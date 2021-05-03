@@ -15,21 +15,19 @@ my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 my_data_clean_small <- my_data_clean_aug %>%
   select(Sample, Abundance, Season, Location, Phylum, Family)
 
-
-topX_phylum <- rel_topX(my_data_clean_small, 8)
-
-my_data_clean_small_rel_plot <- produce_topX(my_data_clean_small, topX_phylum)
-
-
+topX_phylum <- topX(my_data_clean_small, 8)
+my_data_clean_small_plot <- produce_topX(my_data_clean_small, topX_phylum)
 
 # Visualise data ----------------------------------------------------------
-ggplot(topX_phylum, aes(x = Sample, y = Phylum_abundance, 
+ggplot(my_data_clean_small_plot, 
+       aes(x = Sample, y = Phylum_abundance, 
            # we sort the top phyla alphabetically, then add "Other" at the end
-           fill = factor(Phylum))) + 
+           fill = factor(Phylum, c(sort(topX_phylum), "Other")))) + 
   geom_bar(stat = "identity", position = "fill") + 
   labs(x = "Sample", y = "Relative abundance") + 
   scale_y_continuous(expand = c(0.02, 0), labels = scales::percent_format()) +
-  scale_fill_manual(values = c(as.character(iwanthue(nrow(distinct(topX_phylum, Phylum)))))) +
+  scale_fill_manual(values = c(as.character(iwanthue(length(topX_phylum)+1))),
+                    name = "Top 8 most abundant Phylum") +
   facet_grid( ~ Location, scales = "free_x", space = "free_x") + 
   theme_classic() +
   theme(axis.text = element_text(colour = "black"),
@@ -41,15 +39,15 @@ ggplot(topX_phylum, aes(x = Sample, y = Phylum_abundance,
         legend.key.size = unit(0.4, "cm"))
 
 
-
 ggplot(my_data_clean_small_plot,
        aes(x = Sample, y = Phylum_abundance, 
            # we sort the top phyla alphabetically, then add "Other" at the end
-           fill = factor(Phylum))) + 
+           fill = factor(Phylum, c(sort(topX_phylum), "Other")))) + 
   geom_bar(stat = "identity") + 
   labs(x = "Sample", y = "Abundance") + 
   scale_y_continuous(expand = c(0.02, 0)) +
-  scale_fill_manual(values = c(as.character(iwanthue(nrow(distinct(my_data_clean_small_plot, Phylum)))))) +
+  scale_fill_manual(values = (as.character(iwanthue(length(topX_phylum)+1))),
+                    name = "Top 8 most abundant Phylum") +
   facet_grid( ~ Location, scales = "free_x", space = "free_x") + 
   theme_classic() +
   theme(axis.text = element_text(colour = "black"),
