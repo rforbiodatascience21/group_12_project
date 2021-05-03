@@ -16,6 +16,13 @@ source(file = "R/99_functions.R")
 my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
+
+#make season binary
+my_data_clean_aug <- my_data_clean_aug %>%
+  mutate(Season = case_when(
+    Season == "Winter" ~ 0,
+    Season == "Summer" ~ 1))
+
 #Do a PCA fit
 pca_fit <- my_data_clean_aug %>% 
   select(where(is.numeric)) %>% # retain only numeric columns
@@ -24,7 +31,7 @@ pca_fit <- my_data_clean_aug %>%
 # Visualise data ----------------------------------------------------------
 pca_fit %>%
   augment(my_data_clean_aug) %>% # add original dataset back in
-  ggplot(aes(.fittedPC1, .fittedPC2, color = site)) + 
+  ggplot(aes(.fittedPC1, .fittedPC2, color = Location)) + 
   geom_point(size = 1.5) +
   stat_ellipse(frame = TRUE, frame.type = 'norm') + 
   labs(x = "PC 1", y = "PC 2", title = "Scatter plot in Top 2 Principal Components") +
