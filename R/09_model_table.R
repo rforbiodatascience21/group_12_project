@@ -13,23 +13,23 @@ source(file = "R/99_functions.R")
 
 # Load data ---------------------------------------------------------------
 metadata <- read_tsv(file = "data/01_meta_data.tsv.gz")
+my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
-tab <- metadata %>%
-  summarise(
-    before_filter = n(), 
-    after_filter = sum(Season != "N"))
-  )
+before_filter <- summarise(metadata, before_filter = n())
+
+my_data_clean_aug <- my_data_clean_aug %>%
+  pivot_wider(names_from = Sample, values_from = OTU)
+
+after_filter_location <- my_data_clean_aug %>%
+  group_by(Location) %>%
+  summarise(n(Location != N))
+
+after_filter_season <- metadata %>%
+  group_by(Season) %>%
+  summarise(n())
   
 
-samples_before_filter <- 44
-samples_after_filter <- tally(metadata, wt = )
-
-samples_summer <- 27-15
-samples_winter <- 15
-samples_discharge <-
-samples_downstream
-samples_upstream
 
 
 
