@@ -25,19 +25,7 @@ my_data_clean_aug = my_data_clean %>%
          Rank5 = str_sub(Rank5, start = 6),
          Rank6 = str_sub(Rank6, start = 6)) %>%
   rename(Kingdom = Rank1, Phylum = Rank2, Class = Rank3, Order = Rank4, 
-         Family = Rank5, Genus = Rank6, Species = Rank7) %>%
-  group_by(Sample) %>% 
-  mutate(total_abundance = sum(Abundance)) %>%
-  mutate(rel_abundance = Abundance / total_abundance, total_abundance = NULL)
-
-#find relative abundance for each phylum 
-rel_abundance <- my_data_clean_aug %>%
-  group_by(Phylum) %>%
-  summarise(sum_rel_abundance = sum(rel_abundance))
-
-#merge the two datasets
-my_data_clean_aug <- my_data_clean_aug %>%
-  left_join(rel_abundance)
+         Family = Rank5, Genus = Rank6, Species = Rank7)
 
 
 # Write data --------------------------------------------------------------
