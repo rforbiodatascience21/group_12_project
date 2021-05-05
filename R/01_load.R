@@ -17,21 +17,9 @@ source(file = "R/99_functions.R")
 
 
 # Load raw data and save it------------------------------------------------
-<<<<<<< HEAD
-<<<<<<< HEAD
 data <- import_biom("data/raw/feature-table_taxonomy.biom")
 metadata <- read_xlsx("data/raw/GE_mapfile.xlsx")
-=======
-data = import_biom("data/raw/feature-table_taxonomy.biom")
-metadata = read_xlsx("data/raw/GE_mapfile.xlsx")
-metadata2 = read_xlsx("data/raw/Book1.xlsx")
-=======
-data = import_biom("data/raw_/feature-table_taxonomy.biom")
-metadata = read_xlsx("data/raw_/GE_mapfile.xlsx")
-metadata2 = read_xlsx("data/raw_/Book1.xlsx")
->>>>>>> 393d8183898231a486e8a414eabab7fb7b270b5f
 
->>>>>>> 8168854c50777f2c47405a17e1be959378bad112
 
 #Convert to tidy format
 data <- data %>% 
@@ -40,8 +28,4 @@ data <- data %>%
 
 # Write data --------------------------------------------------------------
 write_tsv(x = data, file = "data/01_data.tsv.gz")
-<<<<<<< HEAD
 write_tsv(x = metadata, file = "data/01_meta_data.tsv.gz")
-=======
-write_tsv(x = metadata, file = "data/01_meta_data.tsv.gz")
->>>>>>> 8168854c50777f2c47405a17e1be959378bad112
