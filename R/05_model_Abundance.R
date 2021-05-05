@@ -13,7 +13,7 @@ my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
 my_data_clean_small <- my_data_clean_aug %>%
-  select(Sample, Abundance, Season, Location, Phylum, Family)
+  select(Sample, Abundance, Season, Location, Phylum, Family, )
 
 topX_phylum <- topX(my_data_clean_small, 8)
 my_data_clean_small_plot <- produce_topX(my_data_clean_small, topX_phylum)

@@ -16,9 +16,9 @@ my_data_clean <- read_tsv(file = "data/02_my_data_clean.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
 my_data_clean_aug = my_data_clean %>%
-  select(., -Rank8, -Rank9, -Rank10, -Rank11, -Rank12, -Rank13, -Rank14, 
+  select(-Rank8, -Rank9, -Rank10, -Rank11, -Rank12, -Rank13, -Rank14, 
          -Rank15, -BarcodeSequence, -LinkerPrimerSequence, -ReversePrimer) %>%
-  mutate(., Rank1 = str_sub(Rank1, start = 6), 
+  mutate(Rank1 = str_sub(Rank1, start = 6), 
          Rank2 = str_sub(Rank2, start = 6),
          Rank3 = str_sub(Rank3, start = 6),
          Rank4 = str_sub(Rank4, start = 6),
@@ -37,7 +37,7 @@ rel_abundance <- my_data_clean_aug %>%
 
 #merge the two datasets
 my_data_clean_aug <- my_data_clean_aug %>%
-  left_join(., rel_abundance)
+  left_join(rel_abundance)
 
 
 # Write data --------------------------------------------------------------

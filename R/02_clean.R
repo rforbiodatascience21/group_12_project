@@ -20,19 +20,19 @@ metadata2 <- read_tsv(file = "data/01_meta_data2.tsv.gz")
 #merging data and filter for metadata
 my_data_clean = data %>%
   full_join(metadata, by = c("Sample"="#SampleID")) %>%
-  filter(., Description != "N") %>%
-  filter(., Location != "Wastewater") %>% 
-  filter(., !is.na(Rank2))
+  filter(Description != "N") %>%
+  filter(Location != "Wastewater") %>% 
+  filter(!is.na(Rank2))
 
 #WHAM BAM FREE THE RAM!
 rm(data, metadata)
 
 metadata2 = metadata2 %>% 
   fill(Parameter) %>% 
-  rename(., "Upstream" = "Sampling sites", 
+  rename("Upstream" = "Sampling sites", 
          Discharge = ...4 , 
          Downstream = ...5) %>% 
-  slice(., n=2:27)
+  slice(n=2:27)
 
 
 my_data_clean = my_data_clean %>% 

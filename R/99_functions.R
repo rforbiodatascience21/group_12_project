@@ -1,17 +1,10 @@
 # Define project functions ------------------------------------------------
 topX <- function(data, X){
-  total_count <- data %>% 
-    group_by(Sample) %>% 
-    summarise(total_abundance = sum(Abundance))
-  
   top_phylum <- data %>%
-    left_join(total_count) %>%
-    mutate(rel_abundance = Abundance / total_abundance) %>%
     group_by(Phylum) %>%
     summarise(sum_rel_abundance = sum(rel_abundance)) %>%
     top_n(., X, sum_rel_abundance) %>%
     pull(., Phylum)
-  
   return(top_phylum)
 }
 

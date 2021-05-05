@@ -21,7 +21,7 @@ before_filter <- summarise(metadata, before_filter = n())
 my_data_clean_aug <- my_data_clean_aug %>%
   pivot_wider(names_from = Sample, values_from = OTU)
 
-after_filter_location <- my_data_clean_aug %>%
+ after_filter_location <- my_data_clean_aug %>%
   group_by(Location) %>%
   summarise(n(Location != N))
 
