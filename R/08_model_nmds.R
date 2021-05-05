@@ -55,7 +55,7 @@ xx = ggplot(data.scores, aes(x = NMDS1, y = NMDS2)) +
   scale_colour_manual(values = c("#009E73", "#E69F00")) 
 
 xx
-
+stressplot(nmds)
 ggsave("NMDS.svg")
 
 

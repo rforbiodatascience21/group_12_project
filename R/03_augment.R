@@ -25,7 +25,17 @@ my_data_clean_aug = my_data_clean %>%
          Rank5 = str_sub(Rank5, start = 6),
          Rank6 = str_sub(Rank6, start = 6)) %>%
   rename(Kingdom = Rank1, Phylum = Rank2, Class = Rank3, Order = Rank4, 
-         Family = Rank5, Genus = Rank6, Species = Rank7) 
+         Family = Rank5, Genus = Rank6, Species = Rank7) %>%
+  group_by(Sample) %>% 
+  mutate(total_abundance = sum(Abundance))
+  
+
+top_phylum <- data %>%
+  mutate(rel_abundance = Abundance / total_abundance) %>%
+  group_by(Phylum) %>%
+  summarise(sum_rel_abundance = sum(rel_abundance)) %>%
+
+
 
 
 # Write data --------------------------------------------------------------
