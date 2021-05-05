@@ -19,6 +19,7 @@ source(file = "R/99_functions.R")
 # Load raw data and save it------------------------------------------------
 data = import_biom("data/raw/feature-table_taxonomy.biom")
 metadata = read_xlsx("data/raw/GE_mapfile.xlsx")
+metadata2 = read_xlsx("data/raw/Book1.xlsx")
 
 
 #Convert to tidy format
@@ -28,3 +29,4 @@ data = psmelt(data)
 # Write data --------------------------------------------------------------
 write_tsv(x = data, file = "data/01_data.tsv.gz")
 write_tsv(x = metadata, file = "data/01_meta_data.tsv.gz")
+write_tsv(x = metadata2, file = "data/01_meta_data2.tsv.gz")
