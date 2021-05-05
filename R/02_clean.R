@@ -26,7 +26,6 @@ my_data_clean = data %>%
 
 metadata2 = metadata2 %>% 
   fill(Parameter) %>% 
-  pivot_longer()
 
 my_data_cleaner = my_data_clean %>% 
   full_join(metadata2, by = c("Location" = "Sampling sites"))
