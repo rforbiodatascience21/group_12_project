@@ -25,9 +25,11 @@ my_data_clean_aug_wide_smaller <- my_data_clean_aug_wide %>%
 
 nmds = metaMDS(my_data_clean_aug_wide_smaller, distance = "bray")
 
-plot(nmds)
+scores_nmds <- nmds %>%
+  scores() %>% 
+  as_tibble()
 
-scores_nmds <- as_tibble(scores(nmds))
+#as_tibble(scores(nmds))
 
 #add columns to data frame
 my_data_clean_aug_wide_joined <- my_data_clean_aug_wide %>%
