@@ -3,8 +3,8 @@ topX <- function(data, X){
   top_phylum <- data %>%
     group_by(Phylum) %>%
     summarise(sum_rel_abundance = sum(rel_abundance)) %>%
-    top_n(., X, sum_rel_abundance) %>%
-    pull(., Phylum)
+    top_n(X, sum_rel_abundance) %>%
+    pull(Phylum)
   return(top_phylum)
 }
 
