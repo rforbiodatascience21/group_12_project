@@ -20,7 +20,7 @@ source(file = "R/99_functions.R")
 data = import_biom("data/raw/feature-table_taxonomy.biom")
 metadata = read_xlsx("data/raw/GE_mapfile.xlsx")
 metadata2 = read_xlsx("data/raw/Book1.xlsx")
-
+res_genes = read_xlsx("")
 
 #Convert to tidy format
 data = psmelt(data)
