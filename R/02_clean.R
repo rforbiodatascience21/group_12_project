@@ -36,7 +36,7 @@ metadata2 = metadata2 %>%
 
 
 my_data_clean = my_data_clean %>% 
-  full_join(metadata2, by = "Season")
+  full_join(metadata2, by = "Season") 
   
 # Write data --------------------------------------------------------------
 write_tsv(x = my_data_clean,
