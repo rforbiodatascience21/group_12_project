@@ -14,7 +14,7 @@ source(file = "R/99_functions.R")
 # Load data ---------------------------------------------------------------
 data <- read_tsv(file = "data/01_data.tsv.gz")
 metadata <- read_tsv(file = "data/01_meta_data.tsv.gz")
-
+metadata2 <- read_tsv(file = "data/01_meta_data2.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
 #merging data and filter for metadata

@@ -29,4 +29,4 @@ data = psmelt(data)
 # Write data --------------------------------------------------------------
 write_tsv(x = data, file = "data/01_data.tsv.gz")
 write_tsv(x = metadata, file = "data/01_meta_data.tsv.gz")
-write_tsv(x = metadata, file = "data/01_meta_data2.tsv.gz")
+write_tsv(x = metadata2, file = "data/01_meta_data2.tsv.gz")
