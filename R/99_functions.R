@@ -16,20 +16,6 @@ topX <- function(data, X){
 }
 
 
-#Function to calculate X most abundant phylum in samples while the rest is 
-#grouped in "Other"
-produce_topX <- function(data, top_phylum) { 
-  topX <- data %>%
-    mutate(Phylum = case_when(Phylum %in% topX_phylum ~ Phylum, 
-                              T ~ "Other")) %>% 
-    group_by(Sample, Phylum, Location, Season) %>% 
-    summarise(Phylum_abundance = sum(Abundance)) %>%
-    ungroup()
-  
-  return(topX)
-}
-
-
 #save plot theme
 my_theme <- theme(axis.text = element_text(colour = "black"),
                   axis.text.x = element_text(angle = 90, 
@@ -44,5 +30,16 @@ my_theme <- theme(axis.text = element_text(colour = "black"),
                   legend.key.size = unit(0.4, "cm"))
 
 
+color_vector <- function(topX_phylum) {
+  col_vector <- topX_phylum %>% 
+    length() + 1 %>% 
+    iwanthue() %>% 
+    as.character() %>% 
+    c()
+  
+  return(col_vector)
+}
 
+#vector of order of Location
+location = c("Upstream", "Wastewater", "Discharge", "Downstream" )
 
