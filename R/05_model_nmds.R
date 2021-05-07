@@ -40,27 +40,6 @@ plot_nmds <- my_data_clean_aug_wide_joined %>%
   ggplot(., aes(x=NMDS1, y=NMDS2)) + 
   geom_point(size =4, aes( shape = Season, colour = Location)) +
   labs(x = "NMDS1", colour = "Location", y = "NMDS2", shape = "Season")
-plot_nmds
-
-
-xx = ggplot(data.scores, aes(x = NMDS1, y = NMDS2)) + 
-  geom_point(size = 4, aes( shape = Type, colour = Time))+ 
-  theme(axis.text.y = element_text(colour = "black", size = 12, face = "bold"), 
-        axis.text.x = element_text(colour = "black", face = "bold", size = 12), 
-        legend.text = element_text(size = 12, face ="bold", colour ="black"), 
-        legend.position = "right", axis.title.y = element_text(face = "bold", size = 14), 
-        axis.title.x = element_text(face = "bold", size = 14, colour = "black"), 
-        legend.title = element_text(size = 14, colour = "black", face = "bold"), 
-        panel.background = element_blank(), panel.border = element_rect(colour = "black", fill = NA, size = 1.2),
-        legend.key=element_blank()) + 
-  labs(x = "NMDS1", colour = "Time", y = "NMDS2", shape = "Type")  + 
-  scale_colour_manual(values = c("#009E73", "#E69F00")) 
-
-xx
-stressplot(nmds)
-ggsave("NMDS.svg")
-
-
 
 # Write data --------------------------------------------------------------
-
+ggsave(filename = "nmds_plot.png", path = "/cloud/project/figures", plot = plot_nmds, device = "png", width = 16, height = 9, dpi = 136)
