@@ -48,4 +48,8 @@ NA_percentage <- my_data_clean_aug %>%
 #Making the plot
 NA_percentage %>% 
   ggplot(aes(x = reorder(`Taxonomic level` , `Percent NA's`), y=`Percent NA's`)) +
-  geom_col()
+  geom_col(fill = "turquoise") +
+  labs(x= "Taxonomic level", y="Percent NA's") +
+  scale_y_continuous(labels=scales::percent_format()) +
+  theme_classic() +
+  my_theme
