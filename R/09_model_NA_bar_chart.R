@@ -44,8 +44,18 @@ NA_percentage <- my_data_clean_aug %>%
   as_tibble() %>% 
   pivot_longer(names_to = "Taxonomic level", values_to = "Percent NA's", cols=everything())
 
-
 #Making the plot
-NA_percentage %>% 
+plot_me_daddy <- NA_percentage %>% 
   ggplot(aes(x = reorder(`Taxonomic level` , `Percent NA's`), y=`Percent NA's`)) +
+<<<<<<< HEAD
+  geom_col(fill = "turquoise") +
+  labs(x= "Taxonomic level", y="Percent NA's") +
+  scale_y_continuous(labels=scales::percent_format()) +
+  theme_classic() +
+  my_theme
+=======
   geom_col()
+
+# Write data --------------------------------------------------------------
+ggsave(filename = "na_bar_plot.png", path = "/cloud/project/figures", plot = plot_me_daddy, device = "png", width = 16, height = 9, dpi = 136)
+>>>>>>> 890bff7f4b40c6a5ca004ebf8cbd9c71441a0323
