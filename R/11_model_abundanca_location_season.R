@@ -48,4 +48,3 @@ ggplot(my_data_clean_aug_plot,
   my_theme
 
 # Write data --------------------------------------------------------------
-
