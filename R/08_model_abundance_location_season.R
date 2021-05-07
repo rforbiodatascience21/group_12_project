@@ -24,27 +24,43 @@ my_data_clean_aug_plot <- my_data_clean_aug %>%
 
 
 # Visualise data ----------------------------------------------------------
-#save plot theme
-my_theme <- theme(axis.text = element_text(colour = "black"),
-                  axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 8),
-                  panel.border = element_rect(linetype = "solid", fill = NA,
-                                              size = 0.5),
-                  axis.line = element_blank(),
-                  strip.background = element_blank(),
-                  legend.key.size = unit(0.4, "cm"))
-
 #plot rel abundance sorted by Season and Location
 ggplot(my_data_clean_aug_plot, 
        aes(x = Location, y = Phylum_abundance, 
            # we sort the top phyla alphabetically, then add "Other" at the end
            fill = factor(Phylum, c(sort(topX_phylum), "Other")))) + 
-  geom_bar(stat = "identity", position = "fill") + 
-  labs(x = "Location", y = "Relative abundance") + 
-  scale_y_continuous(expand = c(0.02, 0), labels = scales::percent_format()) +
+  geom_bar(stat = "identity", 
+           position = "fill") + 
+  labs(x = "Location", 
+       y = "Relative abundance") + 
+  scale_y_continuous(expand = c(0.02, 0), 
+                     labels = scales::percent_format()) +
   scale_fill_manual(values = c(as.character(iwanthue(length(topX_phylum)+1))),
                     name = "Top 8 most abundant Phylum") +
-  facet_grid( ~ Season, scales = "free_x", space = "free_x") + 
+  facet_grid( ~ Season, 
+              scales = "free_x", 
+              space = "free_x") + 
+  theme_classic() +
+  my_theme
+
+#plot rel abundance sorted by Season and Location
+ggplot(my_data_clean_aug_plot, 
+       aes(x = Season, y = Phylum_abundance, 
+           # we sort the top phyla alphabetically, then add "Other" at the end
+           fill = factor(Phylum, c(sort(topX_phylum), "Other")))) + 
+  geom_bar(stat = "identity", 
+           position = "fill") + 
+  labs(x = "Season", 
+       y = "Relative abundance") + 
+  scale_y_continuous(expand = c(0.02, 0), 
+                     labels = scales::percent_format()) +
+  scale_fill_manual(values = c(as.character(iwanthue(length(topX_phylum)+1))),
+                    name = "Top 8 most abundant Phylum") +
+  facet_grid( ~ factor(Location, levels = location), 
+              scales = "free_x", 
+              space = "free_x") + 
   theme_classic() +
   my_theme
 
 # Write data --------------------------------------------------------------
+ggsave()
