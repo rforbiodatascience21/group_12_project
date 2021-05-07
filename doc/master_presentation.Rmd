@@ -1,0 +1,29 @@
+---
+title: "master_presentation"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Slide with Bullets
+
+- Intro
+- Materials and methods
+- Results
+- Discussion
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r firstplots}
+![testing_1]()
+```
+
