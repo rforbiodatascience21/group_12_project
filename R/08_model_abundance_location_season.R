@@ -12,33 +12,15 @@ source(file = "R/99_functions.R")
 my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
-total_abun <- my_data_clean_aug %>% 
-  group_by(Location, Season) %>% 
-  summarise(total_abundance = sum(Abundance))
-
-my_data_clean_aug_abun <- my_data_clean_aug %>% 
-  left_join(total_abun) %>% 
-  group_by(Location, Season, Phylum) %>% 
-  mutate(rel_abundance = sum(Abundance) / total_abundance)  
-  
-
-    left_join(total_abun)
-
-    group_by(Phylum) %>%
-    summarise(sum_rel_abundance = sum(rel_abundance)) %>% 
-    top_n(X, sum_rel_abundance) %>%
-    pull(Phylum)
-  
-
-#merge the two datasets
-my_data_clean_abun <- my_data_clean_aug %>%
-  left_join(rel_abundance)
-
 #find most abundant phylum
-topX_phylum <- topX(my_data_clean_aug_abun, 8)
+topX_phylum <- topX(my_data_clean_aug, 8)
 
-
-
+my_data_clean_aug_plot <- my_data_clean_aug %>%
+  mutate(Phylum = case_when(Phylum %in% topX_phylum ~ Phylum, 
+                            T ~ "Other")) %>% 
+  group_by(Phylum, Location, Season) %>% 
+  summarise(Phylum_abundance = sum(Abundance)) %>%
+  ungroup()
 
 
 # Visualise data ----------------------------------------------------------
@@ -52,8 +34,8 @@ my_theme <- theme(axis.text = element_text(colour = "black"),
                   legend.key.size = unit(0.4, "cm"))
 
 #plot rel abundance sorted by Season and Location
-ggplot(my_data_clean_aug_abun, 
-       aes(x = Location, y = rel_abundance, 
+ggplot(my_data_clean_aug_plot, 
+       aes(x = Location, y = Phylum_abundance, 
            # we sort the top phyla alphabetically, then add "Other" at the end
            fill = factor(Phylum, c(sort(topX_phylum), "Other")))) + 
   geom_bar(stat = "identity", position = "fill") + 
