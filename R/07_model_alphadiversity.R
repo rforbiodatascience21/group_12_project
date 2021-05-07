@@ -24,7 +24,7 @@ shannon <- my_data_wide %>%
   select(-Season, -Location, -Sample) %>% 
   diversity()
 
-# Placeholder comment
+# Combine into same data table for plotting
 result <- my_data_wide %>% 
   select(Sample, Location, Season) %>% 
   cbind(shannon)
@@ -33,26 +33,11 @@ result <- my_data_wide %>%
 plot1 <- result %>% 
   group_by(Location, Season) %>% 
   ggplot(
-    aes(x = Location, y = shannon, color = Season)) +
-  geom_boxplot()
+    aes(x = Location, y = shannon, fill= Season)) +
+  geom_boxplot() +
+  theme_classic() +
+  my_theme
 
-plot1
 
-
-#Plot
-plot2 <- result %>% 
-  group_by(Location, Season) %>% 
-  ggplot(
-    aes(x = Season, y = shannon, color = Location)) +
-  geom_boxplot()
-
-plot2
-
-#Plot
-plot3 <- result %>% 
-  group_by(Location, Season) %>% 
-  ggplot(
-    aes(x = Sample, y = shannon, color = Season)) +
-  geom_point()
-
-plot3
+# Write data --------------------------------------------------------------
+ggsave(filename = "alpha_div.png", path = "/cloud/project/figures", plot = plot1, device = "png", width = 16, height = 9, dpi = 136)

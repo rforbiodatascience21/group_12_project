@@ -29,13 +29,5 @@ after_filter_season <- metadata %>%
   group_by(Season) %>%
   summarise(n())
   
-
-
-
-
-
-
-
-
 # Write data --------------------------------------------------------------
 
