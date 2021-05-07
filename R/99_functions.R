@@ -36,7 +36,6 @@ color_vector <- function(topX_phylum) {
     iwanthue() %>% 
     as.character() %>% 
     c()
-  
   return(col_vector)
 }
 

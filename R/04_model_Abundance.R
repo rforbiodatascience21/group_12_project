@@ -24,7 +24,7 @@ my_data_clean_aug_plot <- my_data_clean_aug %>%
 
 # Visualise data ----------------------------------------------------------
 #plot rel abundance sorted by location
-ggplot(my_data_clean_aug_plot, 
+plot_rel_abundance <- ggplot(my_data_clean_aug_plot, 
        aes(x = Sample, 
            y = Phylum_abundance, 
            # we sort the top phyla alphabetically, then add "Other" at the end
@@ -44,4 +44,12 @@ ggplot(my_data_clean_aug_plot,
 
 
 # Write data --------------------------------------------------------------
-
+ggsave(filename = "08_mean_abundance_location.png", 
+       path = "/cloud/project/figures", 
+       plot = ggsave(filename = "04_abundance_sample.png", 
+                     path = "/cloud/project/figures", 
+                     plot = plot_rel_abundance, 
+                     device = "png", 
+                     width = 16, 
+                     height = 9, 
+                     dpi = 136)

@@ -25,7 +25,7 @@ my_data_clean_aug_plot <- my_data_clean_aug %>%
 
 # Visualise data ----------------------------------------------------------
 #plot rel abundance sorted by Season and Location
-ggplot(my_data_clean_aug_plot, 
+plot_rel_abundance_Location <- ggplot(my_data_clean_aug_plot, 
        aes(x = Location, y = Phylum_abundance, 
            # we sort the top phyla alphabetically, then add "Other" at the end
            fill = factor(Phylum, c(sort(topX_phylum), "Other")))) + 
@@ -44,7 +44,7 @@ ggplot(my_data_clean_aug_plot,
   my_theme
 
 #plot rel abundance sorted by Season and Location
-ggplot(my_data_clean_aug_plot, 
+plot_rel_abundance_season <- ggplot(my_data_clean_aug_plot, 
        aes(x = Season, y = Phylum_abundance, 
            # we sort the top phyla alphabetically, then add "Other" at the end
            fill = factor(Phylum, c(sort(topX_phylum), "Other")))) + 
@@ -63,4 +63,20 @@ ggplot(my_data_clean_aug_plot,
   my_theme
 
 # Write data --------------------------------------------------------------
-ggsave()
+ggsave(filename = "08_mean_abundance_location.png", 
+       path = "/cloud/project/figures", 
+       plot = plot_rel_abundance_Location, 
+       device = "png", 
+       width = 16, 
+       height = 9, 
+       dpi = 136)
+
+ggsave(filename = "08_mean_abundance_location.png", 
+       path = "/cloud/project/figures", 
+       plot = ggsave(filename = "08_mean_abundance_season.png", 
+       path = "/cloud/project/figures", 
+       plot = plot_rel_abundance_season, 
+       device = "png", 
+       width = 16, 
+       height = 9, 
+       dpi = 136)
