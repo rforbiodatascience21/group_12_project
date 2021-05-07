@@ -35,8 +35,7 @@ plot1 <- result %>%
   ggplot(
     aes(x = Location, y = shannon, fill= Season)) +
   geom_boxplot() +
-  theme_classic() +
-  my_theme
+  theme_classic()
 
 
 # Write data --------------------------------------------------------------
