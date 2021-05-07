@@ -20,7 +20,8 @@ topX <- function(data, X){
 #grouped in "Other"
 produce_topX <- function(data, top_phylum) { 
   topX <- data %>%
-    mutate(Phylum = case_when(Phylum %in% topX_phylum ~ Phylum, T ~ "Other")) %>% 
+    mutate(Phylum = case_when(Phylum %in% topX_phylum ~ Phylum, 
+                              T ~ "Other")) %>% 
     group_by(Sample, Phylum, Location, Season) %>% 
     summarise(Phylum_abundance = sum(Abundance)) %>%
     ungroup()
@@ -29,7 +30,18 @@ produce_topX <- function(data, top_phylum) {
 }
 
 
-
+#save plot theme
+my_theme <- theme(axis.text = element_text(colour = "black"),
+                  axis.text.x = element_text(angle = 90, 
+                                             hjust = 1,
+                                             vjust = 0.5, 
+                                             size = 8),
+                  panel.border = element_rect(linetype = "solid", 
+                                              fill = NA,
+                                              size = 0.5),
+                  axis.line = element_blank(),
+                  strip.background = element_blank(),
+                  legend.key.size = unit(0.4, "cm"))
 
 
 

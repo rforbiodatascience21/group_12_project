@@ -21,7 +21,6 @@ metadata <- read_tsv(file = "data/01_meta_data.tsv.gz")
 my_data_clean = data %>%
   full_join(metadata, by = c("Sample"="#SampleID")) %>%
   filter(Description != "N") %>%
-  filter(Location != "Wastewater") %>% 
   filter(!is.na(Rank2))
  
   
