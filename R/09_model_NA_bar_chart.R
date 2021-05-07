@@ -54,9 +54,12 @@ plot_NAs <- NA_percentage %>%
   labs(x= "Taxonomic level", 
        y="Percent NA's") +
   scale_y_continuous(labels=scales::percent_format()) +
-  theme_classic() +
-  my_theme 
-
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x = "Location",
+       y = "Shannon index",
+       title = "Alpha diversity",
+       subtitle = "Shannon diversity index")
 # Write data --------------------------------------------------------------
 ggsave(filename = "na_bar_plot.png", 
        path = "/cloud/project/figures", 
@@ -65,4 +68,3 @@ ggsave(filename = "na_bar_plot.png",
        width = 16, 
        height = 9, 
        dpi = 72)
-
