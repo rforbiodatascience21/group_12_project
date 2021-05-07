@@ -38,8 +38,15 @@ my_data_clean_aug_wide_joined <- my_data_clean_aug_wide %>%
   
 plot_nmds <- my_data_clean_aug_wide_joined %>%
   ggplot(., aes(x=NMDS1, y=NMDS2)) + 
-  geom_point(size =4, aes( shape = Season, colour = Location)) +
-  labs(x = "NMDS1", colour = "Location", y = "NMDS2", shape = "Season")
+  geom_point(size =4, 
+             aes( shape = Season, 
+                  colour = Location)) +
+  labs(x = "NMDS1", 
+       colour = "Location", 
+       y = "NMDS2", 
+       shape = "Season",
+       title = "Beta diversity", #Måske bedre title
+       subtitle = "Bray curtis dissimilarity")
 
 # Write data --------------------------------------------------------------
 ggsave(filename = "nmds_plot.png", path = "/cloud/project/figures", plot = plot_nmds, device = "png", width = 16, height = 9, dpi = 136)
