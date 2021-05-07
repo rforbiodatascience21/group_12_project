@@ -66,4 +66,3 @@ ggplot(my_data_clean_aug_abun,
   my_theme
 
 # Write data --------------------------------------------------------------
-
