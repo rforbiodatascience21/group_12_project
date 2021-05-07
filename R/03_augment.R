@@ -24,8 +24,13 @@ my_data_clean_aug = my_data_clean %>%
          Rank4 = str_sub(Rank4, start = 6),
          Rank5 = str_sub(Rank5, start = 6),
          Rank6 = str_sub(Rank6, start = 6)) %>%
-  rename(Kingdom = Rank1, Phylum = Rank2, Class = Rank3, Order = Rank4, 
-         Family = Rank5, Genus = Rank6, Species = Rank7)
+  rename(Kingdom = Rank1, 
+         Phylum = Rank2, 
+         Class = Rank3, 
+         Order = Rank4, 
+         Family = Rank5, 
+         Genus = Rank6, 
+         Species = Rank7)
 
 
 # Write data --------------------------------------------------------------
