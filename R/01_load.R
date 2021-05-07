@@ -20,7 +20,6 @@ source(file = "R/99_functions.R")
 data <- import_biom("data/raw_/feature-table_taxonomy.biom")
 metadata <- read_xlsx("data/raw_/GE_mapfile.xlsx")
 
-
 #Convert to tidy format
 data <- data %>% 
   psmelt()
