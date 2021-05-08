@@ -49,4 +49,9 @@ plot_nmds <- my_data_clean_aug_wide_joined %>%
        subtitle = "Bray curtis dissimilarity")
 
 # Write data --------------------------------------------------------------
-ggsave(filename = "nmds_plot.png", path = "/cloud/project/figures", plot = plot_nmds, device = "png", width = 16, height = 9, dpi = 136)
+ggsave(filename = "nmds_plot.png", 
+       path = "/cloud/project/figures", 
+       plot = plot_nmds, device = "png", 
+       width = 16, 
+       height = 9, 
+       dpi = 136)

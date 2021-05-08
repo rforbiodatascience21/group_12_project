@@ -42,6 +42,7 @@ plot_rel_abundance <- ggplot(my_data_clean_aug_plot,
   theme_classic() +
   my_theme
 
+plot_rel_abundance
 
 # Write data --------------------------------------------------------------
 ggsave(filename = "08_mean_abundance_location.png", 
