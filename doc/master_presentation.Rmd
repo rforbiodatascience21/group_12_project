@@ -1,7 +1,8 @@
 ---
-title: "Exam project" |  /cloud/project/figures/R_for_bio_data_Science_text_logo_w_dna.png{width=0.5in}  
+title: "Exam project"
 author: Tor Toudahl (s163688), Martin Enggaard(s193125), Natasia Thornval(s143493)
 date: May 12, 2021
+logo: /cloud/project/figures/R_for_bio_data_Science_text_logo_w_dna.png
 output: ioslides_presentation
 ---
 
@@ -12,17 +13,33 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Agenda
 
-- Intro
+- Introduction
 - Materials and methods
 - Results
 - Discussion
 
+## Introduction
 
+- **Dataset:** OTU table
+
+- **Source:** *Effects of industrial effluents containing moderate levels of antibiotic mixtures on the abundance of antibiotic resistance genes and bacterial community composition in exposed creek sediments*; Milakovic et.al, 2019 https://www.sciencedirect.com/science/article/pii/S0048969719359972 
+
+- **Sequencing method:** Illumina-based 16S amplicon sequencing
+
+- **Sampling location:** Kalinivica creek, Croatia. By antibiotic production facility wastewater outlet
+
+- **Our aim:** Evaluate effect of the wastewater discharge on bacterial community composition
+
+## Sampling
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/sampling_river_fig_4_sites.PNG")
+```
 
 ## Slide with NA Plot
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("/cloud/project/figures/na_bar_plot.png")
 ```
+
 
 
 
