@@ -58,7 +58,8 @@ plot_rel_abundance_season <- ggplot(my_data_clean_aug_plot,
                      labels = scales::percent_format()) +
   scale_fill_manual(values = c(as.character(iwanthue(length(topX_phylum)+1))),
                     name = "Top 8 most abundant Phylum") +
-  facet_grid( ~ factor(Location, levels = location), 
+  facet_grid( ~ factor(Location, 
+                       levels = location), 
               scales = "free_x", 
               space = "free_x") + 
   theme_classic() +
