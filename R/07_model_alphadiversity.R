@@ -44,4 +44,10 @@ plot1 <- result %>%
 
 plot1
 # Write data --------------------------------------------------------------
-ggsave(filename = "alpha_div.png", path = "/cloud/project/figures", plot = plot1, device = "png", width = 16, height = 9, dpi = 136)
+ggsave(filename = "alpha_div.png", 
+       path = "/cloud/project/figures", 
+       plot = plot1, 
+       device = "png", 
+       width = 8, 
+       height = 5, 
+       dpi = 136)
