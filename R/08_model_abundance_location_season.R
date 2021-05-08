@@ -32,7 +32,8 @@ plot_rel_abundance_Location <- ggplot(my_data_clean_aug_plot,
   geom_bar(stat = "identity", 
            position = "fill") + 
   labs(x = "Location", 
-       y = "Relative abundance") + 
+       y = "Relative abundance",
+       title = "Relative abundance of 8 most abundant phylum by locations") + 
   scale_y_continuous(expand = c(0.02, 0), 
                      labels = scales::percent_format()) +
   scale_fill_manual(values = c(as.character(iwanthue(length(topX_phylum)+1))),
@@ -51,7 +52,8 @@ plot_rel_abundance_season <- ggplot(my_data_clean_aug_plot,
   geom_bar(stat = "identity", 
            position = "fill") + 
   labs(x = "Season", 
-       y = "Relative abundance") + 
+       y = "Relative abundance",
+       title = "Relative abundance of 8 most abundant phylum by season") + 
   scale_y_continuous(expand = c(0.02, 0), 
                      labels = scales::percent_format()) +
   scale_fill_manual(values = c(as.character(iwanthue(length(topX_phylum)+1))),
