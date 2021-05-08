@@ -7,7 +7,6 @@ library("tidyverse")
 library("tidyr")
 library("vegan")
 
-
 # Define functions --------------------------------------------------------
 source(file = "R/99_functions.R")
 
@@ -29,7 +28,10 @@ scores_nmds <- nmds %>%
   scores() %>% 
   as_tibble()
 
-#as_tibble(scores(nmds))
+stresslevel <- nmds$stress %>% 
+  round(digits = 4) %>% 
+  toString()
+  
 
 #add columns to data frame
 my_data_clean_aug_wide_joined <- my_data_clean_aug_wide %>%
@@ -38,15 +40,25 @@ my_data_clean_aug_wide_joined <- my_data_clean_aug_wide %>%
   
 plot_nmds <- my_data_clean_aug_wide_joined %>%
   ggplot(., aes(x=NMDS1, y=NMDS2)) + 
-  geom_point(size =4, 
-             aes( shape = Season, 
-                  colour = Location)) +
+  geom_point(size = 3, 
+             aes(shape = Season, 
+                 colour = Location)) +
   labs(x = "NMDS1", 
        colour = "Location", 
        y = "NMDS2", 
        shape = "Season",
-       title = "Beta diversity", #Måske bedre title
-       subtitle = "Bray curtis dissimilarity")
+       title = "Non metric multidimensional scaling of beta diversity", #Måske bedre title
+       subtitle = "Bray curtis dissimilarity") + 
+  annotate("text", 
+           x=-4, 
+           y=2.5, 
+           label = paste("Stress = ", stresslevel)) 
 
 # Write data --------------------------------------------------------------
-ggsave(filename = "nmds_plot.png", path = "/cloud/project/figures", plot = plot_nmds, device = "png", width = 16, height = 9, dpi = 136)
+ggsave(filename = "nmds_plot.png",
+       path = "/cloud/project/figures", 
+       plot = plot_nmds, 
+       device = "png", 
+       width = 8, 
+       height = 5, 
+       dpi = 262)

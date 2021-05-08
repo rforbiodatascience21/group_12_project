@@ -18,8 +18,9 @@ my_data_clean = data %>%
   filter(Description != "N") 
 
 my_data_clean_aug = my_data_clean %>%
-  select(-Rank8, -Rank9, -Rank10, -Rank11, -Rank12, -Rank13, -Rank14, 
-         -Rank15, -BarcodeSequence, -LinkerPrimerSequence, -ReversePrimer, -Description) %>%
+  select(-Rank8, -Rank9, -Rank10, -Rank11, -Rank12, -Rank13, -Rank14, -Rank15, 
+         -BarcodeSequence, -LinkerPrimerSequence, 
+         -ReversePrimer, -Description) %>%
   mutate(Rank1 = str_sub(Rank1, start = 6), 
          Rank2 = str_sub(Rank2, start = 6),
          Rank3 = str_sub(Rank3, start = 6),
@@ -55,16 +56,16 @@ plot_NAs <- NA_percentage %>%
        y="Percent NA's") +
   scale_y_continuous(labels=scales::percent_format()) +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(x = "Location",
-       y = "Shannon index",
-       title = "Alpha diversity",
-       subtitle = "Shannon diversity index")
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size=20)) +
+  labs(x = "Taxonomic level",
+       y = "NA percentage",
+       title = "NA's by taxonomic level")
 # Write data --------------------------------------------------------------
 ggsave(filename = "na_bar_plot.png", 
        path = "/cloud/project/figures", 
        plot = plot_NAs, 
        device = "png", 
-       width = 16, 
-       height = 9, 
-       dpi = 72)
+       width = 8, 
+       height = 5, 
+       dpi = 136)

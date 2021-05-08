@@ -32,8 +32,9 @@ result <- my_data_wide %>%
 #Plot
 plot1 <- result %>% 
   group_by(Location, Season) %>% 
-  ggplot(
-    aes(x = Location, y = shannon, fill= Season)) +
+  ggplot(aes(x = Location,
+             y = shannon, 
+             fill= Season)) +
   geom_boxplot() +
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -42,6 +43,11 @@ plot1 <- result %>%
        title = "Alpha diversity",
        subtitle = "Shannon diversity index")
 
-plot1
 # Write data --------------------------------------------------------------
-ggsave(filename = "alpha_div.png", path = "/cloud/project/figures", plot = plot1, device = "png", width = 16, height = 9, dpi = 136)
+ggsave(filename = "alpha_div.png", 
+       path = "/cloud/project/figures", 
+       plot = plot1, 
+       device = "png", 
+       width = 8, 
+       height = 5, 
+       dpi = 136)
