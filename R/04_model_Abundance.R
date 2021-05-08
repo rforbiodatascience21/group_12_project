@@ -31,7 +31,8 @@ plot_rel_abundance <- ggplot(my_data_clean_aug_plot,
            fill = factor(Phylum, c(sort(topX_phylum), "Other")))) + 
   geom_bar(stat = "identity", position = "fill") + 
   labs(x = "Sample", 
-       y = "Relative abundance") + 
+       y = "Relative abundance",
+       title = "Relative abundance of 8 most abundant Phyla in samples") + 
   scale_y_continuous(expand = c(0.02, 0), 
                      labels = scales::percent_format()) +
   scale_fill_manual(values = c(as.character(iwanthue(length(topX_phylum)+1))),
@@ -51,6 +52,6 @@ ggsave(filename = "08_mean_abundance_location.png",
                      path = "/cloud/project/figures", 
                      plot = plot_rel_abundance, 
                      device = "png", 
-                     width = 16, 
-                     height = 9, 
-                     dpi = 136)
+                     width = 8, 
+                     height = 4, 
+                     dpi = 136))

@@ -18,8 +18,9 @@ my_data_clean = data %>%
   filter(Description != "N") 
 
 my_data_clean_aug = my_data_clean %>%
-  select(-Rank8, -Rank9, -Rank10, -Rank11, -Rank12, -Rank13, -Rank14, 
-         -Rank15, -BarcodeSequence, -LinkerPrimerSequence, -ReversePrimer, -Description) %>%
+  select(-Rank8, -Rank9, -Rank10, -Rank11, -Rank12, -Rank13, -Rank14, -Rank15, 
+         -BarcodeSequence, -LinkerPrimerSequence, 
+         -ReversePrimer, -Description) %>%
   mutate(Rank1 = str_sub(Rank1, start = 6), 
          Rank2 = str_sub(Rank2, start = 6),
          Rank3 = str_sub(Rank3, start = 6),
