@@ -1,10 +1,10 @@
 ---
-title: "Exam Project"
+title: "Exam project" |  /cloud/project/figures/R_for_bio_data_Science_text_logo_w_dna.png{width=0.5in}  
 author: Tor Toudahl (s163688), Martin Enggaard(s193125), Natasia Thornval(s143493)
 date: May 12, 2021
-logo: /cloud/project/figures/R_for_bio_data_Science_text_logo_w_dna.png
 output: ioslides_presentation
 ---
+
 ```{r setup, include=FALSE, out.width = 100}
 knitr::opts_chunk$set(echo = FALSE)
 ```
