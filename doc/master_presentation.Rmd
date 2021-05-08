@@ -3,7 +3,7 @@ title: "master_presentation"
 output: ioslides_presentation
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, out.width = 100}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
@@ -21,9 +21,11 @@ knitr::opts_chunk$set(echo = FALSE)
 summary(cars)
 ```
 
-## Slide with Plot
-
-```{r firstplots}
-![testing_1]()
+## Slide with NA Plot
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/na_bar_plot.png")
 ```
+
+
+
 

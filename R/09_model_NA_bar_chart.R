@@ -43,20 +43,29 @@ NA_percentage <- my_data_clean_aug %>%
          -Location) %>% 
   map(~ mean(is.na(.))) %>% 
   as_tibble() %>% 
-  pivot_longer(names_to = "Taxonomic level", values_to = "Percent NA's", cols=everything())
+  pivot_longer(names_to = "Taxonomic level", 
+               values_to = "Percent NA's", 
+               cols=everything())
 
 #Making the plot
-plot_me_daddy <- NA_percentage %>% 
-  ggplot(aes(x = reorder(`Taxonomic level` , `Percent NA's`), y=`Percent NA's`)) +
-<<<<<<< HEAD
+plot_NAs <- NA_percentage %>% 
+  ggplot(aes(x = reorder(`Taxonomic level` , `Percent NA's`), 
+             y=`Percent NA's`)) +
   geom_col(fill = "turquoise") +
-  labs(x= "Taxonomic level", y="Percent NA's") +
+  labs(x= "Taxonomic level", 
+       y="Percent NA's") +
   scale_y_continuous(labels=scales::percent_format()) +
-  theme_classic() +
-  my_theme
-=======
-  geom_col()
-
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size=20)) +
+  labs(x = "Taxonomic level",
+       y = "NA percentage",
+       title = "NA's by taxonomic level")
 # Write data --------------------------------------------------------------
-ggsave(filename = "na_bar_plot.png", path = "/cloud/project/figures", plot = plot_me_daddy, device = "png", width = 16, height = 9, dpi = 136)
->>>>>>> 890bff7f4b40c6a5ca004ebf8cbd9c71441a0323
+ggsave(filename = "na_bar_plot.png", 
+       path = "/cloud/project/figures", 
+       plot = plot_NAs, 
+       device = "png", 
+       width = 8, 
+       height = 5, 
+       dpi = 136)
