@@ -45,7 +45,9 @@ knitr::include_graphics("/cloud/project/figures/sampling_river_fig_4_sites.PNG")
 ```
 
 ## Dataset
-#Indsæt Natasias table
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/table1.html")
+```
 
 ## Dataset processing
 

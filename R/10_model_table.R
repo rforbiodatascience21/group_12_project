@@ -70,5 +70,5 @@ table <- table_info %>%
 
 # Write data --------------------------------------------------------------
 gtsave(table,
-       filename = "table1.html",
+       filename = "table1.png",
        path = "/cloud/project/figures")
