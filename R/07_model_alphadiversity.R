@@ -27,12 +27,12 @@ shannon <- my_data_wide %>%
 # Combine into same data table for plotting
 result <- my_data_wide %>% 
   select(Sample, Location, Season) %>% 
-  cbind(shannon) 
+  cbind(shannon)
 
 #Plot
 plot1 <- result %>% 
-  group_by(Location, Season) %>%
-  ggplot(aes(x = Location, 
+  group_by(Location, Season) %>% 
+  ggplot(aes(x = Location,
              y = shannon, 
              fill= Season)) +
   geom_boxplot() +
@@ -43,7 +43,6 @@ plot1 <- result %>%
        title = "Alpha diversity",
        subtitle = "Shannon diversity index")
 
-plot1
 # Write data --------------------------------------------------------------
 ggsave(filename = "alpha_div.png", 
        path = "/cloud/project/figures", 
