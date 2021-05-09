@@ -52,7 +52,7 @@ plot_nmds <- my_data_clean_aug_wide_joined %>%
   annotate("text", 
            x=-4, 
            y=2.5, 
-           label = paste("Stress = ", stresslevel)) 
+           label = str_c("Stress = ", stresslevel)) 
 
 # Write data --------------------------------------------------------------
 ggsave(filename = "nmds_plot.png",

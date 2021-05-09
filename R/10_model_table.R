@@ -67,8 +67,7 @@ table <- table_info %>%
               columns = vars("No location", Upstream, Wastewater, 
                              Discharge, Downstream))
 
-
 # Write data --------------------------------------------------------------
 gtsave(table,
-       filename = "table1.html",
+       filename = "table1.png",
        path = "/cloud/project/figures")

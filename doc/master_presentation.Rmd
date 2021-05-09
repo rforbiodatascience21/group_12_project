@@ -1,5 +1,6 @@
 ---
 title: "Exam project"
+subtitle: "Group 12"
 author: Tor Toudahl (s163688), Martin Enggaard(s193125), Natasia Thornval(s143493)
 date: May 12, 2021
 logo: /cloud/project/figures/R_for_bio_data_Science_text_logo_w_dna.png
@@ -13,10 +14,18 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Agenda
 
-- Introduction
-- Materials and methods
-- Results
-- Discussion
+* Introduction
+  + Sampling
+  + Dataset
+* Materials and methods
+  + Data processing
+* Results
+  + Precision of taxonomic classification
+  + Community composition1
+  + Community composition2
+  + Alpha diversity
+  + Beta diversity
+* Discussion
 
 ## Introduction
 
@@ -35,12 +44,36 @@ knitr::opts_chunk$set(echo = FALSE)
 knitr::include_graphics("/cloud/project/figures/sampling_river_fig_4_sites.PNG")
 ```
 
-## Slide with NA Plot
+## Dataset
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/table1.html")
+```
+
+## Dataset processing
+
+## Precision of taxonomic classification
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("/cloud/project/figures/na_bar_plot.png")
 ```
 
+## Community composition by phyla
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/08_mean_abundance_season.png")
+```
+
+## Community composition by phyla2
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/08_mean_abundance_location.png")
+```
+Text
+
+## Alpha diversity
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/alpha_div.png")
+```
 
 
-
-
+## Beta diversity
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/nmds_plot.png")
+```
