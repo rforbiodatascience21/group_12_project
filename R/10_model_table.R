@@ -1,11 +1,11 @@
 # Clear workspace ---------------------------------------------------------
 rm(list = ls())
 
-#install.packages("cowplot")
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
 library("gt")
 library("glue")
+library("webshot")
 
 
 # Define functions --------------------------------------------------------

@@ -46,10 +46,13 @@ knitr::include_graphics("/cloud/project/figures/sampling_river_fig_4_sites.PNG")
 
 ## Dataset
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("/cloud/project/figures/table1.html")
+knitr::include_graphics("/cloud/project/figures/table1.png")
 ```
 
 ## Dataset processing
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/Flowchart.png")
+```
 
 ## Precision of taxonomic classification
 ```{r, echo=FALSE, out.width="100%"}
