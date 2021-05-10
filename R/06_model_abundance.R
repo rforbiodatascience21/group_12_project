@@ -109,11 +109,9 @@ ggsave(filename = "06_abundance_location.png",
        height = 4,
        dpi = 136)
 
-ggsave(filename = "06_mean_abundance_location.png", 
+ggsave(filename = "06_abundance_season.png", 
        path = "/cloud/project/figures", 
        plot = ggsave(filename = "06_abundance_season.png", 
-       path = "/cloud/project/figures", 
-       plot = plot_rel_abundance_season, 
        device = "png", 
        width = 8, 
        height = 4, 
