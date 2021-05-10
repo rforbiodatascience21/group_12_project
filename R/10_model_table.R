@@ -68,6 +68,6 @@ table <- table_info %>%
                              Discharge, Downstream))
 
 # Write data --------------------------------------------------------------
-gtsave(table,
+gtsave(data = table,
        filename = "table1.png",
        path = "/cloud/project/figures")

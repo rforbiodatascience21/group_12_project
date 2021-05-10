@@ -12,13 +12,23 @@ source(file = "R/99_functions.R")
 my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
-#find most abundant phylum
-topX_phylum <- topX(data = my_data_clean_aug, 
-                    X = 8)
+#calculate samplewise total abundance
+total_abun <- my_data_clean_aug %>% 
+    group_by(Sample) %>% 
+    summarise(total_abundance = sum(Abundance))
+ 
+#find 8 most abundant phylum 
+top_phylum <- my_data_clean_aug %>% 
+    left_join(y = total_abun) %>% 
+    mutate(rel_abundance = Abundance / total_abundance) %>% 
+    group_by(Phylum) %>%
+    summarise(sum_rel_abundance = sum(rel_abundance)) %>% 
+    top_n(n = 8) %>%
+    pull(Phylum) 
 
 my_data_clean_aug_plot <- my_data_clean_aug %>%
-  mutate(Phylum = case_when(Phylum %in% topX_phylum ~ Phylum, 
-                            Phylum %in% topX_phylum == FALSE ~ "Other")) %>% 
+  mutate(Phylum = case_when(Phylum %in% top_phylum ~ Phylum, 
+                            Phylum %in% top_phylum == FALSE ~ "Other")) %>% 
   group_by(Phylum, Location, Season) %>% 
   summarise(Phylum_abundance = sum(Abundance)) %>%
   ungroup()
@@ -26,7 +36,7 @@ my_data_clean_aug_plot <- my_data_clean_aug %>%
 #make factor level for top phyla alphabetically, then add "Other" at the end
 plot_data <- my_data_clean_aug_plot %>% 
   mutate(Phylum = factor(x = Phylum, 
-                         levels = c(topX_phylum, "Other")))
+                         levels = c(top_phylum, "Other")))
 
 #make color vector
 color_code <- plot_data %>%
@@ -35,10 +45,24 @@ color_code <- plot_data %>%
   pull() %>% 
   iwanthue() 
 
+#save plot theme
+my_theme <- theme(axis.text = element_text(colour = "black"),
+                  axis.text.x = element_text(angle = 45, 
+                                             hjust = 1,
+                                             vjust = 1, 
+                                             size = 8),
+                  panel.border = element_rect(linetype = "solid", 
+                                              fill = NA,
+                                              size = 0.5),
+                  axis.line = element_blank(),
+                  strip.background = element_blank(),
+                  legend.key.size = unit(x = 0.4, 
+                                         units = "cm"))
+
 # Visualise data ----------------------------------------------------------
 #plot rel abundance sorted by Season and Location
 plot_rel_abundance_Location <- ggplot(plot_data, 
-       aes(x = Location, 
+       aes(x = factor(Location, level = location_order), 
            y = Phylum_abundance, 
            fill = Phylum)) + 
   geom_bar(stat = "identity", 
@@ -50,14 +74,13 @@ plot_rel_abundance_Location <- ggplot(plot_data,
                      labels = scales::percent_format()) +
   scale_fill_manual(values = color_code,
                     name = "Top 8 most abundant Phylum") +
-  facet_grid( ~ Season) + 
+  facet_grid(~Season) + 
   theme_classic() +
   my_theme
 
-plot_rel_abundance_Location
 
 #plot rel abundance sorted by Season and Location
-plot_rel_abundance_season <- ggplot(my_data_clean_aug_plot, 
+plot_rel_abundance_season <- ggplot(plot_data, 
        aes(x = Season, 
            y = Phylum_abundance, 
            fill = Phylum)) + 
@@ -70,9 +93,11 @@ plot_rel_abundance_season <- ggplot(my_data_clean_aug_plot,
                      labels = scales::percent_format()) +
   scale_fill_manual(values = color_code,
                     name = "Top 8 most abundant Phylum") +
-  facet_grid( ~ Location) + 
+  facet_grid(~ factor(Location,
+                       level = location_order)) + 
   theme_classic() +
   my_theme
+
 
 # Write data --------------------------------------------------------------
 ggsave(filename = "08_mean_abundance_location.png", 
