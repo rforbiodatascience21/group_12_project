@@ -17,9 +17,10 @@ metadata <- read_tsv(file = "data/01_meta_data.tsv.gz")
 
 
 # Wrangle data ------------------------------------------------------------
-#merging data and filter for metadata
+#merging data and filter for samples with missing metadata
 my_data_clean = data %>%
-  full_join(metadata, by = c("Sample"="#SampleID")) %>%
+  full_join(metadata, 
+            by = c("Sample"="#SampleID")) %>%
   filter(Description != "N") %>%
   filter(!is.na(Rank2))
  

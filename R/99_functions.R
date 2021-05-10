@@ -10,7 +10,7 @@ topX <- function(data, X){
     group_by(Phylum) %>%
     summarise(sum_rel_abundance = sum(rel_abundance)) %>% 
     top_n(X, sum_rel_abundance) %>%
-    pull(Phylum)
+    pull(Phylum) 
   
   return(top_phylum)
 }
@@ -27,17 +27,10 @@ my_theme <- theme(axis.text = element_text(colour = "black"),
                                               size = 0.5),
                   axis.line = element_blank(),
                   strip.background = element_blank(),
-                  legend.key.size = unit(0.4, "cm"))
+                  legend.key.size = unit(x = 0.4, 
+                                         units = "cm"))
 
 
-color_vector <- function(topX_phylum) {
-  col_vector <- topX_phylum %>% 
-    length() + 1 %>% 
-    iwanthue() %>% 
-    as.character() %>% 
-    c()
-  return(col_vector)
-}
 
 #vector of order of Location
 location = c("Upstream", "Wastewater", "Discharge", "Downstream" )

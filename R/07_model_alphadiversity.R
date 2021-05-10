@@ -1,10 +1,8 @@
 # Clear workspace ---------------------------------------------------------
 rm(list = ls())
 
-#install.packages("cowplot")
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
-library("tidyr")
 library("vegan")
 
 # Define functions --------------------------------------------------------
@@ -15,7 +13,8 @@ my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
 my_data_wide <- my_data_clean_aug %>%
-  select(OTU, Abundance, Sample, Season, Location) %>%
+  select(OTU, Abundance, Sample, 
+         Season, Location) %>%
   pivot_wider(names_from = OTU,
               values_from = Abundance)
 
@@ -27,17 +26,18 @@ shannon <- my_data_wide %>%
 # Combine into same data table for plotting
 result <- my_data_wide %>% 
   select(Sample, Location, Season) %>% 
-  cbind(shannon)
+  bind_cols(shannon)
 
 #Plot
-plot1 <- result %>% 
+plot_alpha_div <- result %>% 
   group_by(Location, Season) %>% 
   ggplot(aes(x = Location,
              y = shannon, 
              fill= Season)) +
   geom_boxplot() +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(axis.text.x = element_text(angle = 45, 
+                                   hjust = 1)) +
   labs(x = "Location",
        y = "Shannon index",
        title = "Alpha diversity",
@@ -46,7 +46,7 @@ plot1 <- result %>%
 # Write data --------------------------------------------------------------
 ggsave(filename = "alpha_div.png", 
        path = "/cloud/project/figures", 
-       plot = plot1, 
+       plot = plot_alpha_div, 
        device = "png", 
        width = 8, 
        height = 5, 

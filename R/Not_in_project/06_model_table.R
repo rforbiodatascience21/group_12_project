@@ -1,7 +1,6 @@
 # Clear workspace ---------------------------------------------------------
 rm(list = ls())
 
-#install.packages("cowplot")
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
 library("tidyr")
@@ -29,13 +28,5 @@ after_filter_season <- metadata %>%
   group_by(Season) %>%
   summarise(n())
   
-
-
-
-
-
-
-
-
 # Write data --------------------------------------------------------------
 
