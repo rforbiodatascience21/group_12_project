@@ -1,11 +1,7 @@
 ---
-<<<<<<< HEAD
-title: "Exam project" |
-=======
 title: "Exam project"
 subtitle: "Group 12"
->>>>>>> 06dbf262f77afa6e8837351467624302506efd69
-author: Tor Toudahl (s163688), Martin Enggaard(s193125), Natasia Thornval(s143493)
+author: Tor Toudahl (s163688), Martin Enggaard Kristensen(s193125), Natasia Thornval(s143493)
 date: May 12, 2021
 logo: /cloud/project/figures/R_for_bio_data_Science_text_logo_w_dna.png
 output: ioslides_presentation
@@ -50,39 +46,39 @@ knitr::include_graphics("/cloud/project/figures/sampling_river_fig_4_sites.PNG")
 
 ## Dataset - prior to cleaning
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("/cloud/project/figures/table1.png")
+knitr::include_graphics("/cloud/project/figures/04_model_table.png")
 ```
 
 ## Data flow
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("/cloud/project/figures/Flowchart.png")
+knitr::include_graphics("/cloud/project/figures/05_na_barplot.png")
 ```
 
 ## Precision of taxonomic classification
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("/cloud/project/figures/na_bar_plot.png")
+knitr::include_graphics("/cloud/project/figures/05_na_barplot.png")
 ```
 
 ## Community composition by phyla
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("/cloud/project/figures/08_mean_abundance_season.png")
+knitr::include_graphics("/cloud/project/figures/06_abundance_season.png")
 ```
 
 ## Community composition by phyla2
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("/cloud/project/figures/08_mean_abundance_location.png")
+knitr::include_graphics("/cloud/project/figures/06_abundance_location.png")
 ```
 Næste gang vi ser det her tager vi en endelig beslutnig om hvilke abundance plots der skal være med!
 
 ## Alpha diversity
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("/cloud/project/figures/alpha_div.png")
+knitr::include_graphics("/cloud/project/figures/07_alpha_div.png")
 ```
 
 
 ## Beta diversity
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("/cloud/project/figures/nmds_plot.png")
+knitr::include_graphics("/cloud/project/figures/08_nmds.png")
 ```
 
 

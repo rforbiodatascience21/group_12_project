@@ -1,6 +1,6 @@
 # Clear workspace ---------------------------------------------------------
 rm(list = ls())
-#
+
 
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
@@ -23,6 +23,7 @@ NA_percentage <- my_data_clean_aug_na %>%
 
 taxonomic_order <- c("Kingdom", "Phylum", "Class", 
                      "Order", "Family", "Genus", "Species")
+  
 
 #Making the plot
 plot_NAs <- NA_percentage %>% 
@@ -39,6 +40,8 @@ plot_NAs <- NA_percentage %>%
                                    hjust = 1),
         plot.title = element_text(size = 20)) 
 
+
+plot_NAs
 
 # Write data --------------------------------------------------------------
 ggsave(filename = "05_na_barplot.png", 
