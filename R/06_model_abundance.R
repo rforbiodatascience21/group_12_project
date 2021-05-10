@@ -81,7 +81,7 @@ plot_rel_abundance_Location <- ggplot(plot_data,
 
 
 #plot rel abundance sorted by Season and Location
-plot_abundance_season <- ggplot(plot_data, 
+plot_rel_abundance_season <- ggplot(plot_data, 
        aes(x = Season, 
            y = Phylum_abundance, 
            fill = Phylum)) + 
