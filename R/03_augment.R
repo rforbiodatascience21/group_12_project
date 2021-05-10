@@ -32,7 +32,9 @@ my_data_clean_aug_na = my_data_clean %>%
          Rank5 = str_sub(Rank5, 
                          start = 6),
          Rank6 = str_sub(Rank6, 
-                         start = 6)) %>%
+                         start = 6)) %>% 
+  na_if(y = "D_6__") %>% 
+  
   rename(Kingdom = Rank1, 
          Phylum = Rank2, 
          Class = Rank3, 
