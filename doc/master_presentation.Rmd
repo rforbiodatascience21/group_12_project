@@ -1,7 +1,7 @@
 ---
 title: "Exam project"
 subtitle: "Group 12"
-author: Tor Toudahl (s163688), Martin Enggaard(s193125), Natasia Thornval(s143493)
+author: Tor Toudahl (s163688), Martin Enggaard Kristensen(s193125), Natasia Thornval(s143493)
 date: May 12, 2021
 logo: /cloud/project/figures/R_for_bio_data_Science_text_logo_w_dna.png
 output: ioslides_presentation
