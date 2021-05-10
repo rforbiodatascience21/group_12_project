@@ -1,7 +1,13 @@
 ---
+<<<<<<< HEAD
 title: "Exam project" |
+=======
+title: "Exam project"
+subtitle: "Group 12"
+>>>>>>> 06dbf262f77afa6e8837351467624302506efd69
 author: Tor Toudahl (s163688), Martin Enggaard(s193125), Natasia Thornval(s143493)
 date: May 12, 2021
+logo: /cloud/project/figures/R_for_bio_data_Science_text_logo_w_dna.png
 output: ioslides_presentation
 ---
 
@@ -12,18 +18,69 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Agenda
 
-- Intro
-- Materials and methods
-- Results
-- Discussion
+* Introduction
+  + Sampling
+  + Dataset
+* Materials and methods
+  + Data processing
+* Results
+  + Precision of taxonomic classification
+  + Community composition1
+  + Community composition2
+  + Alpha diversity
+  + Beta diversity
+* Discussion
 
+## Introduction
 
+- **Dataset:** OTU table
 
-## Slide with NA Plot
+- **Source:** *Effects of industrial effluents containing moderate levels of antibiotic mixtures on the abundance of antibiotic resistance genes and bacterial community composition in exposed creek sediments*; Milakovic et.al, 2019 https://www.sciencedirect.com/science/article/pii/S0048969719359972 
+
+- **Sequencing method:** Illumina-based 16S amplicon sequencing
+
+- **Sampling location:** Kalinivica creek, Croatia. By antibiotic production facility wastewater outlet
+
+- **Our aim:** Evaluate effect of the wastewater discharge on bacterial community composition
+
+## Sampling
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/sampling_river_fig_4_sites.PNG")
+```
+
+## Dataset
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/table1.png")
+```
+
+## Dataset processing
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/Flowchart.png")
+```
+
+## Precision of taxonomic classification
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("/cloud/project/figures/na_bar_plot.png")
 ```
 
+## Community composition by phyla
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/08_mean_abundance_season.png")
+```
+
+## Community composition by phyla2
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/08_mean_abundance_location.png")
+```
+Text
+
+## Alpha diversity
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/alpha_div.png")
+```
 
 
-
+## Beta diversity
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/cloud/project/figures/nmds_plot.png")
+```
