@@ -20,7 +20,7 @@ my_data_clean_aug_na = my_data_clean %>%
   select(-Rank8, -Rank9, -Rank10, 
          -Rank11, -Rank12, -Rank13, 
          -Rank14, -Rank15, -BarcodeSequence, 
-         -LinkerPrimerSequence, -ReversePrimer, -Description) %>%
+         -LinkerPrimerSequence, -ReversePrimer, -Description) 
   mutate(Rank1 = str_sub(Rank1, 
                          start = 6), 
          Rank2 = str_sub(Rank2, 
@@ -32,7 +32,7 @@ my_data_clean_aug_na = my_data_clean %>%
          Rank5 = str_sub(Rank5, 
                          start = 6),
          Rank6 = str_sub(Rank6, 
-                         start = 6)) %>%
+                         start = 6)) %>% 
   rename(Kingdom = Rank1, 
          Phylum = Rank2, 
          Class = Rank3, 
