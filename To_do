@@ -12,11 +12,13 @@ Tor + Martin snak med Gisle om data (DONE)
 
 #Lave powerpoint
 
+#Vandmærke på slides
+
 #Kig plots igennem og giv dem design og titler (DONE)
 
 #Lav intro tabel (DONE)
 
-#Tabel/flowchart over filtrering 
+#Tabel/flowchart over filtrering (DONE)
 
 #Ændre rækkefølge af metadata (DONE)
 
@@ -24,11 +26,11 @@ Tor + Martin snak med Gisle om data (DONE)
 
 #Læs artikel om data (DONE)
 
-#Lav README fil
+#Lav README fil (DONE)
 
-#Add knitr of R markdown to do_it_file
+#Add knitr of R markdown to do_it_file (DONE)
 
-# Match names in rmd file 
+# Match names in rmd file (DONE)
 
 #Statistical test:
 "Kruskal-Wallis test (performed in GraphPad Prism v6.01) and the package DESeq2 (v1.22.1) were used to test statistically significant differences (p < 0.05) of the relative abundance of ARGs and bacterial phyla/genera between each DW site and UP site"
