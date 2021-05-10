@@ -5,6 +5,8 @@ rm(list = ls())
 library("tidyverse")
 library("hues")
 library("forcats")
+library("dplyr")
+library("stringr")
 
 # Define functions --------------------------------------------------------
 source(file = "R/99_functions.R")
@@ -13,39 +15,49 @@ source(file = "R/99_functions.R")
 my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
-topX_phylum <- topX(my_data_clean_aug, 8)
+topX_phylum <- topX(data = my_data_clean_aug, 
+                    X = 8)
 
 my_data_clean_aug_plot <- my_data_clean_aug %>%
   mutate(Phylum = case_when(Phylum %in% topX_phylum ~ Phylum, 
-                            T ~ "Other")) %>% 
+                            Phylum %in% topX_phylum == FALSE ~ "Other")) %>% 
   group_by(Sample, Phylum, Location, Season) %>% 
   summarise(Phylum_abundance = sum(Abundance)) %>%
   ungroup()
 
-
+#make factor level for top phyla alphabetically, then add "Other" at the end
+plot_data <- my_data_clean_aug_plot %>% 
+  mutate(Phylum = factor(x = Phylum, 
+                         levels = c(topX_phylum, "Other")))
+  
+#make color vector
+color_code <- plot_data %>%
+  distinct(Phylum) %>% 
+  count() %>% 
+  pull() %>% 
+  iwanthue() 
 
 # Visualise data ----------------------------------------------------------
 #plot rel abundance sorted by location
-plot_rel_abundance <- ggplot(my_data_clean_aug_plot, 
+plot_rel_abundance <- ggplot(plot_data, 
        aes(x = Sample, 
-           y = Phylum_abundance, 
-           # we sort the top phyla alphabetically, then add "Other" at the end
-           fill = factor(Phylum, c(sort(topX_phylum), "Other")))) + 
-  geom_bar(stat = "identity", position = "fill") + 
+           y = Phylum_abundance,
+           fill = Phylum)) + 
+  geom_bar(stat = "identity",
+           position = "fill") + 
   labs(x = "Sample", 
        y = "Relative abundance",
        title = "Relative abundance of 8 most abundant Phyla in samples") + 
   scale_y_continuous(expand = c(0.02, 0), 
                      labels = scales::percent_format()) +
-  scale_fill_manual(values = c(as.character(iwanthue(length(topX_phylum)+1))),
+  scale_fill_manual(values = color_code,
                     name = "Top 8 most abundant Phylum") +
-  facet_grid( ~ factor(Location, levels = location), 
+  facet_grid( ~ factor(Location, 
+                       levels = location), 
               scales = "free_x", 
               space = "free_x") + 
   theme_classic() +
   my_theme
-
-plot_rel_abundance
 
 # Write data --------------------------------------------------------------
 ggsave(filename = "08_mean_abundance_location.png", 
