@@ -4,7 +4,6 @@ rm(list = ls())
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
 library("gt")
-library("glue")
 library("webshot")
 
 
@@ -23,14 +22,16 @@ my_data_merged = data %>%
   full_join(metadata, 
             by = c("Sample"="#SampleID"))
 
+#find number of samples and OTU
 n_samples_data <- my_data_merged %>%
-  select(Sample, OTU) %>%
+  select(Sample, OTU)  %>%
   summarise(Samples = n_distinct(Sample), 
-            OTU = n_distinct(OTU)) %>% 
+            OTU = n_distinct(OTU))  %>% 
   pivot_longer(cols = c(Samples, OTU), 
                names_to = " ", 
                values_to = "Total")
 
+#find number of samples and OTU in each season
 n_samples_season <- my_data_merged %>%
   filter(Abundance != 0) %>% 
   group_by(Season) %>%
@@ -41,7 +42,8 @@ n_samples_season <- my_data_merged %>%
   pivot_wider(names_from = Season,
               values_from = value) %>% 
   rename("No season" = None)
-    
+
+#finder number of samples and OTU by location    
 n_samples_location <- my_data_merged %>%
   filter(Abundance != 0) %>% 
   group_by(Location) %>%
@@ -53,21 +55,22 @@ n_samples_location <- my_data_merged %>%
               values_from = value) %>%  
   relocate(" ", "No location" = N, Upstream, Wastewater, Discharge, Downstream)
 
-
 #combine info to one table
 table_info <- n_samples_data %>% 
   left_join(n_samples_location) %>% 
   left_join(n_samples_season)
 
+#tranform table to gt format
 table <- table_info %>%
   gt() %>% 
-  tab_spanner(label = "Season",
-              columns = vars("No season", Summer, Winter)) %>% 
   tab_spanner(label = "Location",
               columns = vars("No location", Upstream, Wastewater, 
-                             Discharge, Downstream))
+                             Discharge, Downstream)) %>% 
+  tab_spanner(label = "Season",
+              columns = vars("No season", Summer, Winter))
+
 
 # Write data --------------------------------------------------------------
 gtsave(data = table,
-       filename = "table1.png",
+       filename = "10_model_table1.png",
        path = "/cloud/project/figures")
