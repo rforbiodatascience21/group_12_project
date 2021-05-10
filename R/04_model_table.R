@@ -72,5 +72,5 @@ table <- table_info %>%
 
 # Write data --------------------------------------------------------------
 gtsave(data = table,
-       filename = "10_model_table1.png",
+       filename = "04_model_table.png",
        path = "/cloud/project/figures")

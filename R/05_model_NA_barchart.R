@@ -41,7 +41,7 @@ plot_NAs <- NA_percentage %>%
 
 
 # Write data --------------------------------------------------------------
-ggsave(filename = "na_bar_plot.png", 
+ggsave(filename = "05_na_barplot.png", 
        path = "/cloud/project/figures", 
        plot = plot_NAs, 
        device = "png", 

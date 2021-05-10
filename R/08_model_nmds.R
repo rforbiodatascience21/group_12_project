@@ -66,7 +66,7 @@ plot_nmds <- my_data_clean_aug_wide_joined %>%
                          stresslevel)) 
 
 # Write data --------------------------------------------------------------
-ggsave(filename = "nmds_plot.png",
+ggsave(filename = "08_nmds.png",
        path = "/cloud/project/figures", 
        plot = plot_nmds, 
        device = "png", 

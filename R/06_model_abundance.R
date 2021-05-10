@@ -101,7 +101,7 @@ plot_rel_abundance_season <- ggplot(plot_data,
 
 
 # Write data --------------------------------------------------------------
-ggsave(filename = "08_mean_abundance_location.png", 
+ggsave(filename = "06_abundance_location.png", 
        path = "/cloud/project/figures", 
        plot = plot_rel_abundance_Location, 
        device = "png", 
@@ -109,9 +109,9 @@ ggsave(filename = "08_mean_abundance_location.png",
        height = 4,
        dpi = 136)
 
-ggsave(filename = "08_mean_abundance_location.png", 
+ggsave(filename = "06_mean_abundance_location.png", 
        path = "/cloud/project/figures", 
-       plot = ggsave(filename = "08_mean_abundance_season.png", 
+       plot = ggsave(filename = "06_abundance_season.png", 
        path = "/cloud/project/figures", 
        plot = plot_rel_abundance_season, 
        device = "png", 
