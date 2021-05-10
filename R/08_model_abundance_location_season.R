@@ -13,22 +13,34 @@ my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
 #find most abundant phylum
-topX_phylum <- topX(my_data_clean_aug, 8)
+topX_phylum <- topX(data = my_data_clean_aug, 
+                    X = 8)
 
 my_data_clean_aug_plot <- my_data_clean_aug %>%
   mutate(Phylum = case_when(Phylum %in% topX_phylum ~ Phylum, 
-                            T ~ "Other")) %>% 
+                            Phylum %in% topX_phylum == FALSE ~ "Other")) %>% 
   group_by(Phylum, Location, Season) %>% 
   summarise(Phylum_abundance = sum(Abundance)) %>%
   ungroup()
 
+#make factor level for top phyla alphabetically, then add "Other" at the end
+plot_data <- my_data_clean_aug_plot %>% 
+  mutate(Phylum = factor(x = Phylum, 
+                         levels = c(topX_phylum, "Other")))
+
+#make color vector
+color_code <- plot_data %>%
+  distinct(Phylum) %>% 
+  count() %>% 
+  pull() %>% 
+  iwanthue() 
 
 # Visualise data ----------------------------------------------------------
 #plot rel abundance sorted by Season and Location
-plot_rel_abundance_Location <- ggplot(my_data_clean_aug_plot, 
-       aes(x = Location, y = Phylum_abundance, 
-           # we sort the top phyla alphabetically, then add "Other" at the end
-           fill = factor(Phylum, c(sort(topX_phylum), "Other")))) + 
+plot_rel_abundance_Location <- ggplot(plot_data, 
+       aes(x = Location, 
+           y = Phylum_abundance, 
+           fill = Phylum)) + 
   geom_bar(stat = "identity", 
            position = "fill") + 
   labs(x = "Location", 
@@ -36,19 +48,19 @@ plot_rel_abundance_Location <- ggplot(my_data_clean_aug_plot,
        title = "Relative abundance of 8 most abundant phylum by locations") + 
   scale_y_continuous(expand = c(0.02, 0), 
                      labels = scales::percent_format()) +
-  scale_fill_manual(values = c(as.character(iwanthue(length(topX_phylum)+1))),
+  scale_fill_manual(values = color_code,
                     name = "Top 8 most abundant Phylum") +
-  facet_grid( ~ Season, 
-              scales = "free_x", 
-              space = "free_x") + 
+  facet_grid( ~ Season) + 
   theme_classic() +
   my_theme
 
+plot_rel_abundance_Location
+
 #plot rel abundance sorted by Season and Location
 plot_rel_abundance_season <- ggplot(my_data_clean_aug_plot, 
-       aes(x = Season, y = Phylum_abundance, 
-           # we sort the top phyla alphabetically, then add "Other" at the end
-           fill = factor(Phylum, c(sort(topX_phylum), "Other")))) + 
+       aes(x = Season, 
+           y = Phylum_abundance, 
+           fill = Phylum)) + 
   geom_bar(stat = "identity", 
            position = "fill") + 
   labs(x = "Season", 
@@ -56,12 +68,9 @@ plot_rel_abundance_season <- ggplot(my_data_clean_aug_plot,
        title = "Relative abundance of 8 most abundant phylum by season") + 
   scale_y_continuous(expand = c(0.02, 0), 
                      labels = scales::percent_format()) +
-  scale_fill_manual(values = c(as.character(iwanthue(length(topX_phylum)+1))),
+  scale_fill_manual(values = color_code,
                     name = "Top 8 most abundant Phylum") +
-  facet_grid( ~ factor(Location, 
-                       levels = location), 
-              scales = "free_x", 
-              space = "free_x") + 
+  facet_grid( ~ Location) + 
   theme_classic() +
   my_theme
 
