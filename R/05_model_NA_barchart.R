@@ -13,7 +13,7 @@ my_data_clean_aug_na <- read_tsv(file = "data/03_my_data_clean_aug_na.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
 #Find NA percentage content for each taxonomic level
-NA_percentage <- my_data_clean_aug %>% 
+NA_percentage <- my_data_clean_aug_na %>% 
   select(-Abundance, -Sample, -OTU,
          -Season, -Location) %>% 
   summarise_all(~ mean(is.na(.))) %>% 
