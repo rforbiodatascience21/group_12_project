@@ -16,7 +16,7 @@ my_data_clean <- read_tsv(file = "data/02_my_data_clean.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
 #Remove other unwanted coloumns, and rename taxnomic columns
-my_data_clean_aug = my_data_clean %>%
+my_data_clean_aug_na = my_data_clean %>%
   select(-Rank8, -Rank9, -Rank10, 
          -Rank11, -Rank12, -Rank13, 
          -Rank14, -Rank15, -BarcodeSequence, 
@@ -41,7 +41,13 @@ my_data_clean_aug = my_data_clean %>%
          Genus = Rank6, 
          Species = Rank7)
 
+#make extra augment script without na's
+my_data_clean_aug <- my_data_clean_aug_na %>% 
+  filter(!is.na(Phylum)) 
 
 # Write data --------------------------------------------------------------
 write_tsv(x = my_data_clean_aug,
           file = "data/03_my_data_clean_aug.tsv.gz")
+
+write_tsv(x = my_data_clean_aug_na,
+          file = "data/03_my_data_clean_aug_na.tsv.gz")

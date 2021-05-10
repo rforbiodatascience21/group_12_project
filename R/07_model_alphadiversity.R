@@ -12,7 +12,7 @@ source(file = "R/99_functions.R")
 my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
-my_data_wide <- my_data_clean_aug %>%
+my_data_wide <- my_data_clean_aug %>% 
   select(OTU, Abundance, Sample, 
          Season, Location) %>%
   pivot_wider(names_from = OTU,

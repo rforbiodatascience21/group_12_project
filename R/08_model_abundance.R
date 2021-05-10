@@ -11,6 +11,7 @@ source(file = "R/99_functions.R")
 # Load data ---------------------------------------------------------------
 my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
+
 # Wrangle data ------------------------------------------------------------
 #calculate samplewise total abundance
 total_abun <- my_data_clean_aug %>% 

@@ -1,6 +1,15 @@
 # Clear workspace ---------------------------------------------------------
 rm(list = ls())
 
+
+# REASON FOR NON-inclusion ------------------------------------------------
+
+#This is an old version of the abundace model which also looks at the total 
+#abundance of phylums. Total abundance is not relevant  for 16s amplicon
+#sequencing. It also uses an outdated function (topX_phylum).
+
+
+
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
 library("hues")
