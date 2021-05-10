@@ -9,39 +9,9 @@ library("tidyverse")
 source(file = "R/99_functions.R")
 
 # Load data ---------------------------------------------------------------
-data <- read_tsv(file = "data/01_data.tsv.gz")
-metadata <- read_tsv(file = "data/01_meta_data.tsv.gz")
+my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
-#merging data with metadata, renaming and removal of columns
-my_data_clean_aug = data %>%
-  full_join(y = metadata, 
-            by = c("Sample" = "#SampleID")) %>%
-  filter(Description != "N") %>%
-  select(-Rank8, -Rank9, -Rank10, 
-         -Rank11, -Rank12, -Rank13, 
-         -Rank14, -Rank15, -BarcodeSequence, 
-         -LinkerPrimerSequence, -ReversePrimer, -Description) %>%
-  mutate(Rank1 = str_sub(Rank1, 
-                         start = 6), 
-         Rank2 = str_sub(Rank2, 
-                         start = 6),
-         Rank3 = str_sub(Rank3, 
-                         start = 6),
-         Rank4 = str_sub(Rank4, 
-                         start = 6),
-         Rank5 = str_sub(Rank5, 
-                         start = 6),
-         Rank6 = str_sub(Rank6, 
-                         start = 6)) %>%
-  rename(Kingdom = Rank1, 
-         Phylum = Rank2, 
-         Class = Rank3, 
-         Order = Rank4, 
-         Family = Rank5, 
-         Genus = Rank6, 
-         Species = Rank7)
-
 #Find NA percentage content for each taxonomic level
 NA_percentage <- my_data_clean_aug %>% 
   select(-Abundance, -Sample, -OTU,
