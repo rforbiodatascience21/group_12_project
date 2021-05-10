@@ -16,7 +16,6 @@ my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
 my_data_clean_aug_wide <- my_data_clean_aug %>%
-  filter(!is.na(Phylum)) %>% 
   select(OTU, Abundance, Sample,
          Season, Location) %>%
   pivot_wider(names_from = OTU, 

@@ -9,7 +9,7 @@ library("tidyverse")
 source(file = "R/99_functions.R")
 
 # Load data ---------------------------------------------------------------
-my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
+my_data_clean_aug_na <- read_tsv(file = "data/03_my_data_clean_aug_na.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
 #Find NA percentage content for each taxonomic level
