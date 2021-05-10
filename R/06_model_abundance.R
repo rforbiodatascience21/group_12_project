@@ -70,7 +70,8 @@ plot_rel_abundance_Location <- ggplot(plot_data,
            position = "fill") + 
   labs(x = "Location", 
        y = "Relative abundance",
-       title = "Relative abundance of 8 most abundant phylum by locations") + 
+       title = "Relative abundance of 8 most abundant 
+       phylum grouped by season") + 
   scale_y_continuous(expand = c(0.02, 0), 
                      labels = scales::percent_format()) +
   scale_fill_manual(values = color_code,
@@ -89,7 +90,8 @@ plot_rel_abundance_season <- ggplot(plot_data,
            position = "fill") + 
   labs(x = "Season", 
        y = "Relative abundance",
-       title = "Relative abundance of 8 most abundant phylum by season") + 
+       title = "Relative abundance of 8 most abundant phylum grouped 
+       by location") + 
   scale_y_continuous(expand = c(0.02, 0), 
                      labels = scales::percent_format()) +
   scale_fill_manual(values = color_code,
