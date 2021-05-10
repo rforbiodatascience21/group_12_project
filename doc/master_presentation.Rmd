@@ -16,13 +16,12 @@ knitr::opts_chunk$set(echo = FALSE)
 
 * Introduction
   + Sampling
-  + Dataset
+  + Dataset - prior to cleaning
 * Materials and methods
-  + Data processing
+  + From raw data to results
 * Results
   + Precision of taxonomic classification
-  + Community composition1
-  + Community composition2
+  + Community composition
   + Alpha diversity
   + Beta diversity
 * Discussion
@@ -37,7 +36,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - **Sampling location:** Kalinivica creek, Croatia. By antibiotic production facility wastewater outlet
 
-- **Our aim:** Evaluate effect of the wastewater discharge on bacterial community composition
+- **Our aim:** Evaluate effect of wastewater discharge from antibiotic factory on bacterial community composition
 
 ## Sampling
 ```{r, echo=FALSE, out.width="100%"}
@@ -82,6 +81,17 @@ knitr::include_graphics("/cloud/project/figures/08_nmds.png")
 ```
 
 
-## Discussion
+## Discussion - Wastewater samples
+* **Wastewater samples are different from other samples both on diversity and composition**
+  + Wastewater as an environmental sample differs in physical properties compared to sediment samples
+  + Wastewater samples are more a snapshot, due to water flow
+  + Could possibly exclude wastewater samples
 
-* 
+## Discussion - Effects on community composition
+* **Location has more impact on diversity and composition**
+  + **NMDS:** mainly clustering based on location
+  + **NMDS:** less clustering based on sampling season
+* **Downstream communities are the most diverse**
+  + Many species are able to survive the high concentrations of antibiotics
+  + Literature suggests that selective pressure from antibiotics can increase diversity (*Bengtsson-Palme et al., 2019*)
+  + Different environment downstream (forest) than upstream (agricultural)
