@@ -5,6 +5,7 @@ The data consists of an OTU count table and a metadata table with information ab
 The full analysis pipeline can be performed simply by running the "00_doit.R" script
 
 This pipeline include the following scripts:
+
 R/01_load.R - Loads the "not-flat" datafile and rewrite it to a flat tsv.gz file 
 
 R/02_clean.R - Joins the OTU table with the metadata, and then cleans the combined data table.
