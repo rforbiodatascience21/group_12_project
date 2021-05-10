@@ -70,12 +70,11 @@ plot_rel_abundance_Location <- ggplot(plot_data,
            position = "fill") + 
   labs(x = "Location", 
        y = "Relative abundance",
-       title = "Relative abundance of 8 most abundant 
-       phylum grouped by season") + 
+       title = "Relative abundance of top 8 phyla grouped by season") + 
   scale_y_continuous(expand = c(0.02, 0), 
                      labels = scales::percent_format()) +
   scale_fill_manual(values = color_code,
-                    name = "Top 8 most abundant Phylum") +
+                    name = "Top 8 most abundant Phyla") +
   facet_grid(~Season) + 
   theme_classic() +
   my_theme
@@ -90,12 +89,11 @@ plot_rel_abundance_season <- ggplot(plot_data,
            position = "fill") + 
   labs(x = "Season", 
        y = "Relative abundance",
-       title = "Relative abundance of 8 most abundant phylum grouped 
-       by location") + 
+       title = "Relative abundance of top 8 phyla grouped by location") + 
   scale_y_continuous(expand = c(0.02, 0), 
                      labels = scales::percent_format()) +
   scale_fill_manual(values = color_code,
-                    name = "Top 8 most abundant Phylum") +
+                    name = "Top 8 most abundant Phyla") +
   facet_grid(~ factor(Location,
                        level = location_order)) + 
   theme_classic() +
