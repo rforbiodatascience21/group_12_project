@@ -12,10 +12,6 @@ source(file = "R/05_model_nmds.R")
 source(file = "R/06_model_NA_bar_chart.R")
 source(file = "R/07_model_alphadiversity.R")
 source(file = "R/08_model_abundance.R")
-<<<<<<< HEAD
-
-
-=======
 source(file = "R/09_model_NA_bar_chart.R")
 source(file = "R/10_model_table.R")
->>>>>>> 08915fe3e0c62bbb989cc36e95d2403277cd6e95
+
