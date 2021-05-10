@@ -41,8 +41,6 @@ plot_NAs <- NA_percentage %>%
         plot.title = element_text(size = 20)) 
 
 
-plot_NAs
-
 # Write data --------------------------------------------------------------
 ggsave(filename = "05_na_barplot.png", 
        path = "/cloud/project/figures", 
