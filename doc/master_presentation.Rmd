@@ -44,12 +44,12 @@ knitr::opts_chunk$set(echo = FALSE)
 knitr::include_graphics("/cloud/project/figures/sampling_river_fig_4_sites.PNG")
 ```
 
-## Dataset
+## Dataset - prior to cleaning
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("/cloud/project/figures/table1.png")
 ```
 
-## Dataset processing
+## Data flow
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("/cloud/project/figures/Flowchart.png")
 ```
@@ -68,7 +68,7 @@ knitr::include_graphics("/cloud/project/figures/08_mean_abundance_season.png")
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("/cloud/project/figures/08_mean_abundance_location.png")
 ```
-Text
+Næste gang vi ser det her tager vi en endelig beslutnig om hvilke abundance plots der skal være med!
 
 ## Alpha diversity
 ```{r, echo=FALSE, out.width="100%"}
@@ -80,3 +80,8 @@ knitr::include_graphics("/cloud/project/figures/alpha_div.png")
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("/cloud/project/figures/nmds_plot.png")
 ```
+
+
+## Discussion
+
+* 
