@@ -49,7 +49,7 @@ knitr::include_graphics("/cloud/project/figures/sampling_river_fig_4_sites.PNG")
 knitr::include_graphics("/cloud/project/figures/04_model_table.png")
 ```
 
-## Data flow
+## Flowchart: From raw data to results
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("/cloud/project/figures/data_flowchart.png")
 ```
@@ -64,11 +64,11 @@ knitr::include_graphics("/cloud/project/figures/05_na_barplot.png")
 knitr::include_graphics("/cloud/project/figures/06_abundance_season.png")
 ```
 
-## Community composition by phyla2
+## Community composition by phyla 
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("/cloud/project/figures/06_abundance_location.png")
 ```
-Næste gang vi ser det her tager vi en endelig beslutnig om hvilke abundance plots der skal være med!
+
 
 ## Alpha diversity
 ```{r, echo=FALSE, out.width="100%"}
