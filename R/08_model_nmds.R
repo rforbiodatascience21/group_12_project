@@ -45,7 +45,7 @@ stresslevel <- nmds$stress %>%
 my_data_clean_aug_wide_joined <- my_data_clean_aug_wide %>%
   select(Sample, Season, Location) %>%
   bind_cols(scores_nmds)
-
+ b
 #Plotting  
 plot_nmds <- my_data_clean_aug_wide_joined %>%
   ggplot(aes(x=NMDS1, 
