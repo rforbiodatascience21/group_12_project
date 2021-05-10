@@ -16,7 +16,6 @@ my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 # Wrangle data ------------------------------------------------------------
 my_data_clean_aug_wide <- my_data_clean_aug %>%
-  filter(!is.na(Phylum)) %>% 
   select(OTU, Abundance, Sample,
          Season, Location) %>%
   pivot_wider(names_from = OTU, 
@@ -67,7 +66,7 @@ plot_nmds <- my_data_clean_aug_wide_joined %>%
                          stresslevel)) 
 
 # Write data --------------------------------------------------------------
-ggsave(filename = "nmds_plot.png",
+ggsave(filename = "08_nmds.png",
        path = "/cloud/project/figures", 
        plot = plot_nmds, 
        device = "png", 

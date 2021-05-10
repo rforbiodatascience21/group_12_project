@@ -13,17 +13,13 @@ my_data_clean_aug <- read_tsv(file = "data/03_my_data_clean_aug.tsv.gz")
 
 
 # Wrangle data ------------------------------------------------------------
-#remove NA from data
-my_data_clean_aug_cleaner <- my_data_clean_aug %>% 
-  filter(!is.na(Phylum)) 
-
 #calculate samplewise total abundance
-total_abun <- my_data_clean_aug_cleaner %>% 
+total_abun <- my_data_clean_aug %>% 
     group_by(Sample) %>% 
     summarise(total_abundance = sum(Abundance))
  
 #find 8 most abundant phylum 
-top_phylum <- my_data_clean_aug_cleaner %>% 
+top_phylum <- my_data_clean_aug %>% 
     left_join(y = total_abun) %>% 
     mutate(rel_abundance = Abundance / total_abundance) %>% 
     group_by(Phylum) %>%
@@ -31,7 +27,7 @@ top_phylum <- my_data_clean_aug_cleaner %>%
     top_n(n = 8) %>%
     pull(Phylum) 
 
-my_data_clean_aug_plot <- my_data_clean_aug_cleaner %>%
+my_data_clean_aug_plot <- my_data_clean_aug %>%
   mutate(Phylum = case_when(Phylum %in% top_phylum ~ Phylum, 
                             Phylum %in% top_phylum == FALSE ~ "Other")) %>% 
   group_by(Phylum, Location, Season) %>% 
@@ -105,7 +101,7 @@ plot_rel_abundance_season <- ggplot(plot_data,
 
 
 # Write data --------------------------------------------------------------
-ggsave(filename = "08_mean_abundance_location.png", 
+ggsave(filename = "06_abundance_location.png", 
        path = "/cloud/project/figures", 
        plot = plot_rel_abundance_Location, 
        device = "png", 
@@ -113,9 +109,9 @@ ggsave(filename = "08_mean_abundance_location.png",
        height = 4,
        dpi = 136)
 
-ggsave(filename = "08_mean_abundance_location.png", 
+ggsave(filename = "06_mean_abundance_location.png", 
        path = "/cloud/project/figures", 
-       plot = ggsave(filename = "08_mean_abundance_season.png", 
+       plot = ggsave(filename = "06_abundance_season.png", 
        path = "/cloud/project/figures", 
        plot = plot_rel_abundance_season, 
        device = "png", 
