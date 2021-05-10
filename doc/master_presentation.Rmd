@@ -51,7 +51,7 @@ knitr::include_graphics("/cloud/project/figures/04_model_table.png")
 
 ## Data flow
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("/cloud/project/figures/05_na_barplot.png")
+knitr::include_graphics("/cloud/project/figures/data_flowchart.png")
 ```
 
 ## Precision of taxonomic classification
