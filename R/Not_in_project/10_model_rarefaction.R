@@ -1,7 +1,13 @@
 # Clear workspace ---------------------------------------------------------
 rm(list = ls())
 
-#install.packages("cowplot")
+# REASON FOR NON-inclusion ------------------------------------------------
+#This script produces rarefraction curves for each sample. It is a DEAD_END 
+#as it was not possible to produce the rarefraction curves from scratch using
+#the specific tidyverse format of the course.
+#However, the curves are still produced and they show that all samples can be
+#considered representative of the bacterial communities sampled. 
+
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
 library("vegan")

@@ -24,5 +24,7 @@ Tor + Martin snak med Gisle om data (DONE)
 
 #Læs artikel om data (DONE)
 
+#Lav README fil
+
 #Statistical test:
 "Kruskal-Wallis test (performed in GraphPad Prism v6.01) and the package DESeq2 (v1.22.1) were used to test statistically significant differences (p < 0.05) of the relative abundance of ARGs and bacterial phyla/genera between each DW site and UP site"

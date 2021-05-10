@@ -1,6 +1,13 @@
 # Clear workspace ---------------------------------------------------------
 rm(list = ls())
-#
+
+
+# REASON FOR NON-inclusion ------------------------------------------------
+#THis script contains the beginning of a PCA based on the metadata.
+#Since we only ended up with 2 metadata variables it was realized to be a 
+#DEAD_END
+
+
 
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
