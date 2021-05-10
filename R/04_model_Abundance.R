@@ -4,6 +4,7 @@ rm(list = ls())
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
 library("hues")
+library("forcats")
 
 # Define functions --------------------------------------------------------
 source(file = "R/99_functions.R")
@@ -20,6 +21,7 @@ my_data_clean_aug_plot <- my_data_clean_aug %>%
   group_by(Sample, Phylum, Location, Season) %>% 
   summarise(Phylum_abundance = sum(Abundance)) %>%
   ungroup()
+
 
 
 # Visualise data ----------------------------------------------------------
