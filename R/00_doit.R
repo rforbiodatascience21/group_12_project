@@ -17,8 +17,5 @@ source(file = "R/07_model_alphadiversity.R")
 source(file = "R/08_model_nmds.R")
 
 
-<<<<<<< HEAD
 #Create slides from markdown
 rmarkdown::render("doc/master_presentation.Rmd")
-=======
->>>>>>> 10383ac764ac4b21f9116609ce824e3037f59995
