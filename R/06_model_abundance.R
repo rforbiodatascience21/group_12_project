@@ -81,7 +81,7 @@ plot_rel_abundance_Location <- ggplot(plot_data,
 
 
 #plot rel abundance sorted by Season and Location
-plot_rel_abundance_season <- ggplot(plot_data, 
+plot_abundance_season <- ggplot(plot_data, 
        aes(x = Season, 
            y = Phylum_abundance, 
            fill = Phylum)) + 
@@ -109,12 +109,10 @@ ggsave(filename = "06_abundance_location.png",
        height = 4,
        dpi = 136)
 
-ggsave(filename = "06_mean_abundance_location.png", 
-       path = "/cloud/project/figures", 
-       plot = ggsave(filename = "06_abundance_season.png", 
+ggsave(filename = "06_abundance_season.png", 
        path = "/cloud/project/figures", 
        plot = plot_rel_abundance_season, 
        device = "png", 
        width = 8, 
        height = 4, 
-       dpi = 136))
+       dpi = 136)
